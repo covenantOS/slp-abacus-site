@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: covenantOS/servicelinepro-astro
+  repo: covenantOS/slp-abacus-site
   branch: main
   base_url: https://sveltia-cms-auth.servicelinepro.com
   auth_endpoint: /api/auth
