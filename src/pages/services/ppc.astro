@@ -1,0 +1,467 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import CTASection from '../../components/CTASection.astro';
+import FAQ from '../../components/FAQ.astro';
+import TrustSignals from '../../components/TrustSignals.astro';
+
+const faqs = [
+  {
+    question: 'How can you offer Google Ads with no agency fee?',
+    answer: 'Our Spectrum Reach partnership gives us access to enterprise-level agency buying discounts and first-party data from 30+ million households. Those built-in savings offset our operational costs, which means we don\'t need to charge you an agency fee on ad budgets of $5,000/month or more. For budgets under $5,000/month, a flat $500 tech fee covers campaign management, reporting, and optimization.',
+  },
+  {
+    question: 'Which platforms do my ads run on?',
+    answer: 'Every campaign deploys across <strong>Google, Bing, and Yahoo simultaneously</strong> — covering 99% of all search engine traffic. Most agencies only run Google. Our Spectrum integration ensures your ads reach every major search platform from a single campaign, so you never miss a lead searching on Bing or Yahoo.',
+  },
+  {
+    question: 'What is the $500 flat tech fee?',
+    answer: 'If your monthly ad budget is under $5,000, we charge a flat $500/month tech fee. This covers full campaign management — keyword research, ad copywriting, bid optimization, landing page creation, conversion tracking, analytics, and monthly reporting. If your ad budget is $5,000/month or more, the tech fee is waived entirely. <strong>100% of your ad budget goes directly to funding your campaign.</strong>',
+  },
+  {
+    question: 'Is there a setup fee?',
+    answer: 'There is a one-time setup fee that covers campaign architecture, keyword research, ad copy creation, landing page design, and tracking configuration. However, <strong>the setup fee is completely waived when you commit to a 6-month engagement</strong>. No contracts — just a commitment to run your campaign for six months. You can still cancel anytime; we just ask for a good-faith 6-month run.',
+  },
+  {
+    question: 'What does "speed-to-lead" mean?',
+    answer: 'Speed-to-lead measures how fast you respond to an inbound lead. Studies show contacting a lead within 5 minutes makes you <strong>21x more likely</strong> to qualify that lead compared to waiting 30 minutes. We set up instant notifications, CRM integrations, and call routing so your team can respond in seconds — not hours.',
+  },
+  {
+    question: 'Do I get a custom landing page?',
+    answer: 'Yes. Every PPC client gets a high-converting, custom-designed landing page built specifically for their campaign. Landing pages are A/B tested, mobile-optimized, and tracked with heatmaps and session recordings so we can continually improve conversion rates. A great landing page can double your leads without increasing ad spend.',
+  },
+  {
+    question: 'What kind of reporting do I receive?',
+    answer: 'You receive full transparency through Google Analytics, Microsoft Clarity heatmaps, session recordings, call tracking, and a live dashboard. We review performance bi-weekly and provide a monthly strategy report covering impressions, clicks, cost-per-lead, conversion rates, and recommended optimizations. No black-box reporting — you see everything.',
+  },
+  {
+    question: 'Do I own my ad account?',
+    answer: 'Absolutely. Your Google Ads account, landing pages, and all creative assets belong to you. If you ever leave, everything goes with you. We don\'t hold your data hostage, and we don\'t use shared MCC accounts that restrict your access.',
+  },
+];
+---
+
+<PageLayout
+  title="PPC & Google Ads Management for Home Services | No Agency Fee"
+  description="ServiceLinePro delivers Google, Bing, and Yahoo PPC ads with no agency fee on $5K+ budgets. Powered by Spectrum Reach first-party data. Custom landing pages, heatmap tracking, and speed-to-lead optimization."
+  canonicalUrl="https://servicelinepro.com/services/ppc/"
+>
+
+  <!-- JSON-LD Schema -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "PPC & Google Ads Management for Home Services",
+      "provider": {
+        "@type": "Organization",
+        "name": "ServiceLinePro",
+        "url": "https://servicelinepro.com"
+      },
+      "description": "No-fee PPC management across Google, Bing, and Yahoo. Powered by Spectrum Reach first-party data from 30M+ households.",
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "PPC Management Plans",
+        "itemListElement": [
+          { "@type": "Offer", "name": "PPC Management (Under $5K Budget)", "price": "500", "priceCurrency": "USD", "description": "Flat monthly tech fee for ad budgets under $5,000/month" },
+          { "@type": "Offer", "name": "PPC Management ($5K+ Budget)", "price": "0", "priceCurrency": "USD", "description": "No agency fee for ad budgets of $5,000/month or more" }
+        ]
+      }
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://servicelinepro.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://servicelinepro.com/services/" },
+        { "@type": "ListItem", "position": 3, "name": "PPC & Google Ads", "item": "https://servicelinepro.com/services/ppc/" }
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.question,
+        "acceptedAnswer": { "@type": "Answer", "text": f.answer.replace(/<[^>]*>/g, '') }
+      }))
+    })} />
+  </Fragment>
+
+  <!-- Breadcrumb -->
+  <nav class="bg-brand-dark/95 border-b border-white/10 py-3">
+    <div class="container mx-auto px-4">
+      <ol class="flex items-center gap-2 text-sm text-gray-400">
+        <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+        <li class="text-gray-600">/</li>
+        <li><a href="/services/" class="hover:text-white transition-colors">Services</a></li>
+        <li class="text-gray-600">/</li>
+        <li class="text-brand-red font-medium">PPC & Google Ads</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="section-dark py-20 md:py-28">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="inline-block bg-brand-red/15 text-brand-red text-sm font-semibold tracking-wider uppercase px-4 py-2 rounded-full mb-6">Powered by Spectrum Reach</span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight">
+          No-Fee Google Ads That<br />
+          <span class="text-brand-red">Actually Book Jobs</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Your ads deploy across Google, Bing, and Yahoo simultaneously — reaching 99% of search traffic. 100% of your budget funds your campaign. No agency markup. No hidden fees.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <a href="/booking/" class="btn-primary text-lg px-8 py-4">Book a Strategy Call →</a>
+          <a href="#pricing" class="btn-secondary text-lg px-8 py-4">View Pricing</a>
+        </div>
+        <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
+          <span class="flex items-center gap-2">✅ Google + Bing + Yahoo</span>
+          <span class="flex items-center gap-2">✅ No Agency Fee on $5K+</span>
+          <span class="flex items-center gap-2">✅ 30M+ Household Data</span>
+          <span class="flex items-center gap-2">✅ TAG Certified</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <TrustSignals />
+
+  <!-- The Problem Section -->
+  <section class="section-light py-16 md:py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-dark text-center mb-12">
+          Most PPC Agencies Are Bleeding You Dry
+        </h2>
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <div class="bg-red-50 rounded-2xl p-8 border border-red-100">
+            <h3 class="text-xl font-heading font-bold text-brand-dark mb-4">❌ The Typical Agency Model</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start gap-2"><span class="text-brand-red font-bold mt-0.5">•</span> 15–20% management fee on top of ad spend</li>
+              <li class="flex items-start gap-2"><span class="text-brand-red font-bold mt-0.5">•</span> Ads only run on Google — ignoring Bing and Yahoo</li>
+              <li class="flex items-start gap-2"><span class="text-brand-red font-bold mt-0.5">•</span> Generic landing pages that kill conversion rates</li>
+              <li class="flex items-start gap-2"><span class="text-brand-red font-bold mt-0.5">•</span> Black-box reporting with vanity metrics</li>
+              <li class="flex items-start gap-2"><span class="text-brand-red font-bold mt-0.5">•</span> No heat map tracking or session recordings</li>
+              <li class="flex items-start gap-2"><span class="text-brand-red font-bold mt-0.5">•</span> Slow lead response kills 80% of opportunities</li>
+            </ul>
+          </div>
+          <div class="bg-green-50 rounded-2xl p-8 border border-green-100">
+            <h3 class="text-xl font-heading font-bold text-brand-dark mb-4">✅ The ServiceLinePro Model</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start gap-2"><span class="text-green-600 font-bold mt-0.5">•</span> $0 agency fee on budgets of $5,000+/month</li>
+              <li class="flex items-start gap-2"><span class="text-green-600 font-bold mt-0.5">•</span> Ads deploy to Google, Bing, and Yahoo simultaneously</li>
+              <li class="flex items-start gap-2"><span class="text-green-600 font-bold mt-0.5">•</span> Custom landing pages built for your campaign</li>
+              <li class="flex items-start gap-2"><span class="text-green-600 font-bold mt-0.5">•</span> Full analytics dashboard with real revenue data</li>
+              <li class="flex items-start gap-2"><span class="text-green-600 font-bold mt-0.5">•</span> Clarity heat maps + session recordings on every page</li>
+              <li class="flex items-start gap-2"><span class="text-green-600 font-bold mt-0.5">•</span> Speed-to-lead optimization for instant response</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section-dark py-16 md:py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-white text-center mb-4">
+          How Our Spectrum-Powered PPC Works
+        </h2>
+        <p class="text-gray-400 text-center text-lg mb-12 max-w-2xl mx-auto">
+          We leverage Spectrum Reach's enterprise infrastructure to deliver campaigns that outperform traditional agencies by 30–50% on click-through rates.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+          <div class="bg-white/5 rounded-2xl p-8 border border-white/10 text-center">
+            <div class="text-4xl mb-4">🎯</div>
+            <h3 class="text-xl font-heading font-bold text-white mb-3">Precision Targeting</h3>
+            <p class="text-gray-400">Spectrum's first-party data from 30+ million households across 36 states powers hyper-targeted campaigns that reach homeowners actively seeking your services. This is not third-party guesswork — it is verified behavioral data from real cable and internet subscribers.</p>
+          </div>
+          <div class="bg-white/5 rounded-2xl p-8 border border-white/10 text-center">
+            <div class="text-4xl mb-4">📡</div>
+            <h3 class="text-xl font-heading font-bold text-white mb-3">Triple-Platform Delivery</h3>
+            <p class="text-gray-400">Your campaign runs on Google, Bing, and Yahoo at the same time from a single optimized setup. That covers 99% of all search engine traffic. Most agencies only touch Google, which means they leave roughly 8–12% of qualified leads on the table every single month.</p>
+          </div>
+          <div class="bg-white/5 rounded-2xl p-8 border border-white/10 text-center">
+            <div class="text-4xl mb-4">🤖</div>
+            <h3 class="text-xl font-heading font-bold text-white mb-3">AI-Optimized Bidding</h3>
+            <p class="text-gray-400">Spectrum's AI platform — trained on tens of thousands of historical campaigns — continuously adjusts bids, placements, and targeting in real time. The system learns what converts for your specific trade, market, and service area, then doubles down on winners.</p>
+          </div>
+        </div>
+
+        <!-- Spectrum Certifications -->
+        <div class="bg-white/5 rounded-2xl p-8 border border-white/10">
+          <h3 class="text-xl font-heading font-bold text-white text-center mb-6">Industry Certifications via Spectrum Reach</h3>
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+            <div class="bg-white/5 rounded-xl p-4">
+              <div class="text-2xl mb-2">🛡️</div>
+              <p class="text-sm text-gray-300 font-medium">TAG Certified Against Fraud</p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4">
+              <div class="text-2xl mb-2">🔒</div>
+              <p class="text-sm text-gray-300 font-medium">TAG Certified Against Malware</p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4">
+              <div class="text-2xl mb-2">✅</div>
+              <p class="text-sm text-gray-300 font-medium">TAG Brand Safety Certified</p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4">
+              <div class="text-2xl mb-2">👁️</div>
+              <p class="text-sm text-gray-300 font-medium">TAG Certified For Transparency</p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4">
+              <div class="text-2xl mb-2">🏆</div>
+              <p class="text-sm text-gray-300 font-medium">Google Certified Partner</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="section-light py-16 md:py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-dark text-center mb-4">
+          Simple, Transparent PPC Pricing
+        </h2>
+        <p class="text-gray-600 text-center text-lg mb-12 max-w-2xl mx-auto">
+          No percentage-based fees. No hidden costs. 100% of your ad budget goes directly to funding your campaign.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <!-- Under $5K -->
+          <div class="bg-white rounded-2xl p-8 border-2 border-gray-200 shadow-lg">
+            <div class="text-center mb-6">
+              <span class="inline-block bg-gray-100 text-gray-600 text-sm font-semibold px-4 py-1 rounded-full mb-4">Budget Under $5,000/mo</span>
+              <div class="text-5xl font-heading font-bold text-brand-dark">$500<span class="text-xl text-gray-500 font-normal">/mo</span></div>
+              <p class="text-gray-500 mt-2">Flat tech fee — no percentage markup</p>
+            </div>
+            <ul class="space-y-3 text-gray-700 mb-8">
+              <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Full campaign management & optimization</li>
+              <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Google + Bing + Yahoo deployment</li>
+              <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Custom landing page creation</li>
+              <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Google Analytics integration</li>
+              <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Microsoft Clarity heat maps</li>
+              <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Session recordings & scroll tracking</li>
+              <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Speed-to-lead optimization</li>
+              <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Bi-weekly performance reviews</li>
+            </ul>
+            <a href="/booking/" class="block text-center btn-secondary py-3 rounded-xl font-semibold">Get Started →</a>
+          </div>
+
+          <!-- $5K+ -->
+          <div class="bg-white rounded-2xl p-8 border-2 border-brand-red shadow-xl relative">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+              <span class="bg-brand-red text-white text-sm font-bold px-6 py-1.5 rounded-full">MOST POPULAR</span>
+            </div>
+            <div class="text-center mb-6">
+              <span class="inline-block bg-brand-red/10 text-brand-red text-sm font-semibold px-4 py-1 rounded-full mb-4">Budget $5,000+/mo</span>
+              <div class="text-5xl font-heading font-bold text-brand-dark">$0<span class="text-xl text-gray-500 font-normal">/mo</span></div>
+              <p class="text-gray-500 mt-2">Zero agency fee — 100% funds your ads</p>
+            </div>
+            <ul class="space-y-3 text-gray-700 mb-8">
+              <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> <strong>Everything in the $500/mo plan</strong></li>
+              <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> $0 agency fee — every dollar runs ads</li>
+              <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Spectrum Reach first-party data targeting</li>
+              <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> AI-optimized bidding & placement</li>
+              <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Advanced A/B landing page testing</li>
+              <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Dedicated campaign strategist</li>
+              <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Monthly strategy review calls</li>
+              <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Priority support & optimization</li>
+            </ul>
+            <a href="/booking/" class="block text-center btn-primary py-3 rounded-xl font-semibold">Book Strategy Call →</a>
+          </div>
+        </div>
+
+        <!-- Setup Fee Info -->
+        <div class="bg-brand-gold/10 border border-brand-gold/30 rounded-2xl p-8 text-center">
+          <h3 class="text-xl font-heading font-bold text-brand-dark mb-3">Setup Fee? Waived With a 6-Month Commitment</h3>
+          <p class="text-gray-700 max-w-2xl mx-auto mb-4">
+            There is a one-time setup fee that covers campaign architecture, keyword research, ad copy creation, landing page design, and full tracking configuration. However, <strong>commit to running your campaign for just 6 months and the setup fee is waived entirely</strong>.
+          </p>
+          <p class="text-gray-500 text-sm">No contracts. No lock-in. Just a good-faith commitment to give your campaign the runway it needs to deliver results. You can still cancel anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included Section -->
+  <section class="section-dark py-16 md:py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-white text-center mb-4">
+          Everything That Powers Your Campaign
+        </h2>
+        <p class="text-gray-400 text-center text-lg mb-12 max-w-2xl mx-auto">
+          Every PPC client receives a comprehensive suite of tools, tracking, and optimization — not just ads.
+        </p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+            <div class="text-3xl mb-3">🖥️</div>
+            <h3 class="text-lg font-heading font-bold text-white mb-2">Custom Landing Pages</h3>
+            <p class="text-gray-400 text-sm">Every campaign gets a purpose-built landing page designed to convert clicks into calls. Mobile-first, fast-loading, and continuously optimized through A/B testing. Your landing page is the single biggest lever for reducing cost per lead.</p>
+          </div>
+          <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+            <div class="text-3xl mb-3">📊</div>
+            <h3 class="text-lg font-heading font-bold text-white mb-2">Google Analytics</h3>
+            <p class="text-gray-400 text-sm">Full GA4 implementation with conversion tracking, event monitoring, and custom dashboards. See exactly which keywords, ads, and landing pages generate revenue — not just clicks. Real data for real decisions.</p>
+          </div>
+          <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+            <div class="text-3xl mb-3">🔥</div>
+            <h3 class="text-lg font-heading font-bold text-white mb-2">Microsoft Clarity & Heat Maps</h3>
+            <p class="text-gray-400 text-sm">See exactly how visitors interact with your landing pages through scroll maps, click maps, and attention heat maps. Identify where users drop off, what they ignore, and what drives them to pick up the phone or fill out a form.</p>
+          </div>
+          <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+            <div class="text-3xl mb-3">🎬</div>
+            <h3 class="text-lg font-heading font-bold text-white mb-2">Session Recordings</h3>
+            <p class="text-gray-400 text-sm">Watch anonymized recordings of real visitor sessions on your landing pages. See mouse movements, scroll behavior, form interactions, and rage clicks. This is the data that turns a decent campaign into a dominant one.</p>
+          </div>
+          <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+            <div class="text-3xl mb-3">⚡</div>
+            <h3 class="text-lg font-heading font-bold text-white mb-2">Speed-to-Lead Optimization</h3>
+            <p class="text-gray-400 text-sm">Responding to a lead within 5 minutes makes you 21x more likely to convert. We configure instant notifications, CRM triggers, automated text responses, and call routing so your team connects with leads in seconds — not hours.</p>
+          </div>
+          <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+            <div class="text-3xl mb-3">📞</div>
+            <h3 class="text-lg font-heading font-bold text-white mb-2">Call Tracking & Attribution</h3>
+            <p class="text-gray-400 text-sm">Dynamic number insertion tracks every call back to the exact keyword, ad, and campaign that generated it. Know which calls came from Google, which from Bing, and which from Yahoo. Real attribution means smarter budget allocation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The 100% Budget Promise -->
+  <section class="section-light py-16 md:py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-dark mb-6">
+              100% of Your Budget Funds Your Campaign
+            </h2>
+            <p class="text-gray-700 text-lg mb-6">
+              Most agencies take 15–20% of your ad spend as their management fee. On a $10,000/month budget, that means $1,500–$2,000 never runs an ad. Over a year, you are handing your agency $18,000–$24,000 in fees alone.
+            </p>
+            <p class="text-gray-700 text-lg mb-6">
+              With ServiceLinePro, if your budget is $5,000/month or more, the agency fee is zero. Every dollar you allocate goes directly into your Google, Bing, and Yahoo campaigns. Our costs are covered by the Spectrum Reach partnership — not your ad budget.
+            </p>
+            <p class="text-gray-700 text-lg">
+              For budgets under $5,000/month, we charge a flat $500 tech fee. That is still dramatically less than percentage-based agencies, and you know exactly what you are paying every month. No surprises. No escalating fees as your budget grows.
+            </p>
+          </div>
+          <div class="bg-brand-dark rounded-2xl p-8 text-center">
+            <h3 class="text-white font-heading font-bold text-xl mb-6">Annual Fee Comparison</h3>
+            <div class="space-y-6">
+              <div>
+                <p class="text-gray-400 text-sm mb-1">Typical Agency (15% of $10K/mo)</p>
+                <p class="text-brand-red text-4xl font-heading font-bold">$18,000<span class="text-lg text-gray-500">/year</span></p>
+              </div>
+              <div class="border-t border-white/10 pt-6">
+                <p class="text-gray-400 text-sm mb-1">ServiceLinePro ($10K/mo budget)</p>
+                <p class="text-green-400 text-4xl font-heading font-bold">$0<span class="text-lg text-gray-500">/year</span></p>
+              </div>
+              <div class="bg-green-500/10 rounded-xl p-4 border border-green-500/20">
+                <p class="text-green-400 font-bold text-lg">You save $18,000/year</p>
+                <p class="text-gray-400 text-sm">That's $18K more in ads generating leads</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section-dark py-16 md:py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-white text-center mb-12">
+          From Strategy Call to Leads in 14 Days
+        </h2>
+        <div class="space-y-8">
+          <div class="flex gap-6 items-start">
+            <div class="flex-shrink-0 w-12 h-12 bg-brand-red rounded-xl flex items-center justify-center text-white font-bold text-lg">1</div>
+            <div>
+              <h3 class="text-xl font-heading font-bold text-white mb-2">Strategy Call & Market Analysis</h3>
+              <p class="text-gray-400">We analyze your service area, competitors, average job value, and current marketing performance. We identify the highest-ROI keywords and build a campaign blueprint tailored to your specific trade and market. This is not a generic pitch — it is a data-driven plan.</p>
+            </div>
+          </div>
+          <div class="flex gap-6 items-start">
+            <div class="flex-shrink-0 w-12 h-12 bg-brand-red rounded-xl flex items-center justify-center text-white font-bold text-lg">2</div>
+            <div>
+              <h3 class="text-xl font-heading font-bold text-white mb-2">Campaign Build & Landing Page Design</h3>
+              <p class="text-gray-400">We architect your campaign from scratch — keyword groups, ad copy, extensions, bidding strategy — and simultaneously build your custom landing page. Every element is designed to drive phone calls and form submissions, not just clicks.</p>
+            </div>
+          </div>
+          <div class="flex gap-6 items-start">
+            <div class="flex-shrink-0 w-12 h-12 bg-brand-red rounded-xl flex items-center justify-center text-white font-bold text-lg">3</div>
+            <div>
+              <h3 class="text-xl font-heading font-bold text-white mb-2">Tracking & Speed-to-Lead Setup</h3>
+              <p class="text-gray-400">We install Google Analytics, Microsoft Clarity, call tracking, form tracking, and configure speed-to-lead notifications. Before a single ad runs, every conversion path is tracked and your team is set up to respond instantly to every lead.</p>
+            </div>
+          </div>
+          <div class="flex gap-6 items-start">
+            <div class="flex-shrink-0 w-12 h-12 bg-brand-red rounded-xl flex items-center justify-center text-white font-bold text-lg">4</div>
+            <div>
+              <h3 class="text-xl font-heading font-bold text-white mb-2">Launch & Continuous Optimization</h3>
+              <p class="text-gray-400">Your campaign goes live across Google, Bing, and Yahoo. We monitor performance daily, review heat map data weekly, and run A/B tests on landing pages monthly. Bi-weekly check-ins keep you informed, and monthly strategy sessions ensure your budget is always working at peak efficiency.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Internal Links -->
+  <section class="section-light py-16 md:py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-heading font-bold text-brand-dark mb-4">Pair PPC With Other Services for Maximum ROI</h2>
+        <p class="text-gray-600 text-lg mb-8">PPC drives immediate leads. Combine with SEO and a high-converting website for compounding, long-term growth.</p>
+        <div class="grid md:grid-cols-3 gap-6">
+          <a href="/services/local-seo/" class="block bg-white rounded-xl p-6 border border-gray-200 hover:border-brand-red hover:shadow-lg transition-all">
+            <div class="text-3xl mb-3">📍</div>
+            <h3 class="font-heading font-bold text-brand-dark mb-2">Local SEO</h3>
+            <p class="text-gray-600 text-sm">Dominate the Map Pack while your ads capture intent-driven searches.</p>
+          </a>
+          <a href="/services/web-design/" class="block bg-white rounded-xl p-6 border border-gray-200 hover:border-brand-red hover:shadow-lg transition-all">
+            <div class="text-3xl mb-3">💻</div>
+            <h3 class="font-heading font-bold text-brand-dark mb-2">Web Design</h3>
+            <p class="text-gray-600 text-sm">Send PPC traffic to a conversion-optimized website that books jobs.</p>
+          </a>
+          <a href="/services/tv-streaming/" class="block bg-white rounded-xl p-6 border border-gray-200 hover:border-brand-red hover:shadow-lg transition-all">
+            <div class="text-3xl mb-3">📺</div>
+            <h3 class="font-heading font-bold text-brand-dark mb-2">TV & Streaming</h3>
+            <p class="text-gray-600 text-sm">Add brand awareness through Spectrum TV and streaming placements.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-dark py-16 md:py-20">
+    <div class="container mx-auto px-4">
+      <FAQ headline="PPC & Google Ads — Frequently Asked Questions" items={faqs} />
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <CTASection
+    headline="Ready to Stop Overpaying for Google Ads?"
+    subheadline="Book a free strategy call and see exactly how much you could save with our Spectrum-powered, no-fee PPC model."
+    buttonText="Book Your Free Strategy Call →"
+    buttonHref="/booking/"
+    secondaryText="Call (813) 521-3199"
+    secondaryHref="tel:8135213199"
+  />
+
+</PageLayout>
