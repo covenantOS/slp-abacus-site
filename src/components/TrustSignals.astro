@@ -1,0 +1,32 @@
+---
+interface Props {
+  dark?: boolean;
+}
+const { dark = false } = Astro.props;
+---
+
+<section class={dark ? 'section-dark py-12 border-y border-white/10' : 'bg-white py-12 border-y border-gray-100'}>
+  <div class="container">
+    <p class={`text-center text-sm font-semibold uppercase tracking-widest mb-8 ${dark ? 'text-brand-medium-gray' : 'text-brand-medium-gray'}`}>
+      Trusted By Home Services Leaders
+    </p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+      <div class="text-center">
+        <p class={`text-3xl font-extrabold ${dark ? 'text-brand-gold' : 'text-brand-red'}`}>90-Day</p>
+        <p class={`text-sm mt-1 ${dark ? 'text-brand-medium-gray' : 'text-brand-near-black/60'}`}>Top 3 Guarantee</p>
+      </div>
+      <div class="text-center">
+        <p class={`text-3xl font-extrabold ${dark ? 'text-brand-gold' : 'text-brand-red'}`}>500+</p>
+        <p class={`text-sm mt-1 ${dark ? 'text-brand-medium-gray' : 'text-brand-near-black/60'}`}>Keywords Ranked</p>
+      </div>
+      <div class="text-center">
+        <p class={`text-3xl font-extrabold ${dark ? 'text-brand-gold' : 'text-brand-red'}`}>8+</p>
+        <p class={`text-sm mt-1 ${dark ? 'text-brand-medium-gray' : 'text-brand-near-black/60'}`}>Industries Served</p>
+      </div>
+      <div class="text-center">
+        <p class={`text-3xl font-extrabold ${dark ? 'text-brand-gold' : 'text-brand-red'}`}>Spectrum</p>
+        <p class={`text-sm mt-1 ${dark ? 'text-brand-medium-gray' : 'text-brand-near-black/60'}`}>Certified Partner</p>
+      </div>
+    </div>
+  </div>
+</section>

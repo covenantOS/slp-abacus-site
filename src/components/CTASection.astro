@@ -1,0 +1,41 @@
+---
+interface Props {
+  headline?: string;
+  subheadline?: string;
+  buttonText?: string;
+  buttonHref?: string;
+  secondaryText?: string;
+  secondaryHref?: string;
+  dark?: boolean;
+}
+
+const {
+  headline = 'Ready to Dominate Your Local Market?',
+  subheadline = 'Book a free strategy call with our team. We\'ll audit your online presence and show you exactly how to outrank your competitors.',
+  buttonText = 'Book a Free Strategy Call',
+  buttonHref = '/booking/',
+  secondaryText = '',
+  secondaryHref = '',
+  dark = true,
+} = Astro.props;
+---
+
+<section class={dark ? 'section-dark py-20' : 'bg-brand-soft-red py-20'}>
+  <div class="container text-center">
+    <h2 class={`text-3xl md:text-4xl font-bold mb-4 ${dark ? 'text-white' : 'text-brand-dark'}`}>
+      {headline}
+    </h2>
+    <p class={`text-lg max-w-2xl mx-auto mb-8 ${dark ? 'text-brand-medium-gray' : 'text-brand-near-black/70'}`}>
+      {subheadline}
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href={buttonHref} class="btn-primary text-lg">{buttonText}</a>
+      {secondaryText && (
+        <a href={secondaryHref} class={dark ? 'btn-secondary text-lg' : 'btn-secondary text-lg !border-brand-dark !text-brand-dark hover:!bg-brand-dark hover:!text-white'}>{secondaryText}</a>
+      )}
+    </div>
+    <p class={`text-sm mt-6 ${dark ? 'text-brand-medium-gray' : 'text-brand-near-black/50'}`}>
+      No contracts. No pressure. Just a clear growth plan.
+    </p>
+  </div>
+</section>

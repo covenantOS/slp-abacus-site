@@ -1,0 +1,647 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import CTASection from '../../components/CTASection.astro';
+import FAQ from '../../components/FAQ.astro';
+import TrustSignals from '../../components/TrustSignals.astro';
+
+const faqs = [
+  {
+    question: 'What is the 90-day Top 3 guarantee?',
+    answer: 'We guarantee your primary keyword ranks in the top 3 of the Google Map Pack within 90 days — or we continue working for free until it does (up to an additional 90 days). This applies to clients on Foundation + Accelerator packages. Your primary keyword is defined during onboarding and measured across the purchased geo-grid radius.',
+  },
+  {
+    question: 'What is the difference between the Foundation and the Accelerator?',
+    answer: 'Think of it this way: <strong>the Foundation is the engine, and the Accelerator is the turbocharger</strong>. The Foundation builds permanent, compounding ranking authority through white-hat SEO — citations, GBP optimization, guest posts, press releases, and content. The Accelerator uses geo-targeted ranking signals to push you into the top Map Pack positions fast (7–10 days). The Foundation works without the Accelerator, but with both, you\'re untouchable.',
+  },
+  {
+    question: 'How do I know if I\'m in a Big Market or Small Market?',
+    answer: 'If your metro area population exceeds 500,000, or you\'re in a suburb/satellite city of a 500K+ metro, you\'re in a <strong>Big Market</strong>. Examples: Tampa, Dallas-Fort Worth, Orlando, Phoenix. If your metro is under 500K and not a suburb of a larger metro, you\'re a <strong>Small Market</strong>. Examples: Topeka, Gainesville FL, Pensacola. Edge cases are resolved during onboarding by analyzing your actual Map Pack competitors.',
+  },
+  {
+    question: 'What happens if I cancel? Do I lose my rankings?',
+    answer: 'The Foundation builds <strong>permanent ranking authority</strong>. The rankings you\'ve earned through citations, GBP optimization, guest posts, and content stick even if you cancel. However, if you\'re running an Accelerator, the boosted positions will gradually revert over time without ongoing investment. That\'s why the Foundation + Accelerator combination is so powerful — the Foundation absorbs the ground gained by the Accelerator over time.',
+  },
+  {
+    question: 'What is the 10-day free boost?',
+    answer: 'Qualified prospects (15+ Google reviews, 5-star average, verified GBP) get our Neighborhood Accelerator activated for 10 days at no cost. You watch your geo-grid rankings move in real time. No contract, no commitment. If you don\'t see results, we shake hands and part ways. <a href="/booking/" class="text-brand-red font-semibold">Ask about qualifying →</a>',
+  },
+  {
+    question: 'What do I need to provide to get started?',
+    answer: 'Full admin access to your Google Business Profile, website, and any required platforms. During onboarding, we define your primary keyword, document responsibilities, and sign guarantee terms. We handle everything else.',
+  },
+  {
+    question: 'Can I change my plan later?',
+    answer: 'Absolutely. You can add or remove Accelerator packages at any time. Want to upgrade from Neighborhood to City? No problem. Want to add Link Building for extra authority? We can do that. Your Foundation continues running regardless.',
+  },
+];
+---
+
+<PageLayout
+  title="Local SEO for Home Services"
+  description="Dominate the Google Map Pack with ServiceLinePro's Local SEO. Foundation + Accelerator system with 90-day Top 3 guarantee. Build your custom plan with our interactive pricing calculator."
+  canonicalUrl="https://servicelinepro.com/services/local-seo/"
+>
+
+  <!-- JSON-LD Schema -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Local SEO for Home Services",
+      "provider": {
+        "@type": "Organization",
+        "name": "ServiceLinePro",
+        "url": "https://servicelinepro.com"
+      },
+      "description": "Local SEO service with Foundation + Accelerator system. 90-day Top 3 Google Map Pack guarantee for home services businesses.",
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Local SEO Plans",
+        "itemListElement": [
+          { "@type": "Offer", "name": "Small Market Foundation", "price": "1500", "priceCurrency": "USD", "description": "Monthly local SEO for markets under 500K population" },
+          { "@type": "Offer", "name": "Big Market Foundation", "price": "2000", "priceCurrency": "USD", "description": "Monthly local SEO for markets over 500K population" },
+          { "@type": "Offer", "name": "Neighborhood Accelerator", "price": "1000", "priceCurrency": "USD", "description": "25 sq mile geo-targeted ranking boost" },
+          { "@type": "Offer", "name": "City Accelerator", "price": "2000", "priceCurrency": "USD", "description": "100 sq mile geo-targeted ranking boost" }
+        ]
+      }
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://servicelinepro.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://servicelinepro.com/services/" },
+        { "@type": "ListItem", "position": 3, "name": "Local SEO", "item": "https://servicelinepro.com/services/local-seo/" }
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.question,
+        "acceptedAnswer": { "@type": "Answer", "text": f.answer.replace(/<[^>]*>/g, '') }
+      }))
+    })} />
+  </Fragment>
+
+  <!-- Breadcrumb -->
+  <nav class="bg-brand-dark border-b border-white/10" aria-label="Breadcrumb">
+    <div class="container py-3">
+      <ol class="flex items-center gap-2 text-sm font-[family-name:var(--font-ui)]">
+        <li><a href="/" class="text-brand-medium-gray hover:text-white">Home</a></li>
+        <li class="text-brand-medium-gray">/</li>
+        <li><a href="/services/" class="text-brand-medium-gray hover:text-white">Services</a></li>
+        <li class="text-brand-medium-gray">/</li>
+        <li class="text-white">Local SEO</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="section-dark relative overflow-hidden">
+    <div class="container py-20 lg:py-28 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-brand-gold font-semibold text-sm tracking-widest uppercase mb-4 font-[family-name:var(--font-ui)]">
+            Local SEO for Home Services
+          </p>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+            Own the Google<br />
+            <span class="text-gradient">Map Pack.</span>
+          </h1>
+          <p class="text-lg md:text-xl text-brand-medium-gray leading-relaxed mb-8 max-w-xl">
+            When homeowners search for "plumber near me" or "HVAC repair," they click the top 3 results in Google's Map Pack. Our Foundation + Accelerator system puts you there — and keeps you there. <strong class="text-white">Guaranteed in 90 days, or we work for free.</strong>
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#pricing-calculator" class="btn-primary text-lg">Build Your Plan</a>
+            <a href="/booking/" class="btn-secondary text-lg">Book a Free Call</a>
+          </div>
+          <div class="flex flex-wrap gap-6 mt-8">
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-white text-sm">90-Day Top 3 Guarantee</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-white text-sm">Free 10-Day Boost</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-white text-sm">No Contracts Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="relative hidden lg:block">
+          <img
+            src="/assets/images/seo-revenue-dashboard.webp"
+            alt="ServiceLinePro SEO dashboard showing Map Pack ranking improvements"
+            class="rounded-xl shadow-2xl"
+            width="600"
+            height="400"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-dark to-brand-red/10 pointer-events-none"></div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section-light py-20">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <p class="text-brand-red font-semibold text-sm tracking-widest uppercase mb-3 font-[family-name:var(--font-ui)]">How It Works</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">The Foundation + Accelerator System</h2>
+        <p class="text-brand-near-black/60 text-lg">
+          Our two-layer Local SEO system builds permanent authority while simultaneously pushing you to the top of the Map Pack at speed. The Foundation is the engine. The Accelerator is the turbocharger. Together, they make you untouchable.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Foundation -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-brand-dark rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">Foundation Plan</h3>
+              <p class="text-brand-near-black/50 text-sm">Permanent Authority Building</p>
+            </div>
+          </div>
+          <p class="text-brand-near-black/70 leading-relaxed mb-6">
+            Everything in the Foundation is white-hat, permanent, and builds compounding authority. These rankings stick even if you eventually cancel. The plan runs on a 12-month cycle that repeats indefinitely.
+          </p>
+          <ul class="space-y-2">
+            {[
+              'Full Google Business Profile audit & optimization',
+              'Local keyword research & strategy',
+              'NAP consistency audit & correction',
+              'Monthly GBP posts, photos, Q&As & review responses',
+              'Citation buildout (100+ social profiles, 66 business citations)',
+              'DR30+ guest posts with map embeds',
+              'Geo-network & niche network creation',
+              'Premium press releases & news links',
+              'Continuous CTR optimization & link indexing',
+              'Quarterly strategy reviews',
+            ].map((item) => (
+              <li class="flex items-start gap-2 text-sm">
+                <svg class="w-4 h-4 text-brand-red shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span class="text-brand-near-black/60">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Accelerator -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border-2 border-brand-red">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-brand-red rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">Accelerator Add-Ons</h3>
+              <p class="text-brand-near-black/50 text-sm">Fast Map Pack Movement</p>
+            </div>
+          </div>
+          <p class="text-brand-near-black/70 leading-relaxed mb-6">
+            Accelerators use geo-targeted ranking signals to push you into top Map Pack positions fast. Visible movement in 7–10 days. The Foundation builds the permanent floor; the Accelerator pushes the ceiling higher, faster.
+          </p>
+          <div class="space-y-4">
+            <div class="bg-brand-light-gray rounded-xl p-4">
+              <h4 class="font-bold text-sm mb-1">Neighborhood Accelerator</h4>
+              <p class="text-brand-near-black/60 text-sm">25 sq mile radius · 5×5 geo-grid · Visible movement in 7–10 days. Ideal for tight service areas or smaller towns.</p>
+              <p class="text-brand-red font-bold mt-2">+$1,000/month</p>
+            </div>
+            <div class="bg-brand-light-gray rounded-xl p-4">
+              <h4 class="font-bold text-sm mb-1">City Accelerator <span class="text-brand-gold text-xs font-[family-name:var(--font-ui)]">RECOMMENDED</span></h4>
+              <p class="text-brand-near-black/60 text-sm">100 sq mile radius · 10×10 geo-grid · Dominate the entire city or metro sub-region. Our default recommendation.</p>
+              <p class="text-brand-red font-bold mt-2">+$2,000/month</p>
+            </div>
+            <div class="bg-brand-light-gray rounded-xl p-4">
+              <h4 class="font-bold text-sm mb-1">Link Building Boost</h4>
+              <p class="text-brand-near-black/60 text-sm">Additional high-authority link building to accelerate domain authority and organic rankings beyond the Map Pack.</p>
+              <p class="text-brand-red font-bold mt-2">+$1,500/month</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Pricing Calculator -->
+  <section class="bg-white py-20" id="pricing-calculator">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <p class="text-brand-red font-semibold text-sm tracking-widest uppercase mb-3 font-[family-name:var(--font-ui)]">Build Your Plan</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Interactive SEO Pricing Calculator</h2>
+        <p class="text-brand-near-black/60 text-lg">
+          Select your market size, choose your Accelerator, and pick your launch option. Your total monthly investment and what's included update in real time.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto" id="seo-calculator">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+          <!-- Calculator Controls (3 cols) -->
+          <div class="lg:col-span-3 space-y-8">
+
+            <!-- Step 1: Market Size -->
+            <div class="bg-brand-light-gray rounded-2xl p-6 border border-gray-100">
+              <h3 class="text-lg font-bold mb-1 flex items-center gap-2">
+                <span class="w-7 h-7 bg-brand-red text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
+                Select Your Market Size
+              </h3>
+              <p class="text-brand-near-black/50 text-sm mb-4 ml-9">Based on your metro area population and competition.</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 ml-9">
+                <button
+                  data-market="small"
+                  class="market-btn active bg-white border-2 border-brand-red rounded-xl p-4 text-left transition-all hover:shadow-md"
+                >
+                  <p class="font-bold text-brand-dark">Small Market</p>
+                  <p class="text-xs text-brand-near-black/50 mt-1">Metro under 500K pop.</p>
+                  <p class="text-brand-red font-bold text-lg mt-2">$1,500/mo</p>
+                </button>
+                <button
+                  data-market="big"
+                  class="market-btn bg-white border-2 border-gray-200 rounded-xl p-4 text-left transition-all hover:shadow-md"
+                >
+                  <p class="font-bold text-brand-dark">Big Market</p>
+                  <p class="text-xs text-brand-near-black/50 mt-1">Metro 500K+ pop. or suburb of major metro</p>
+                  <p class="text-brand-red font-bold text-lg mt-2">$2,000/mo</p>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2: Accelerator -->
+            <div class="bg-brand-light-gray rounded-2xl p-6 border border-gray-100">
+              <h3 class="text-lg font-bold mb-1 flex items-center gap-2">
+                <span class="w-7 h-7 bg-brand-red text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
+                Choose an Accelerator <span class="text-brand-near-black/40 text-sm font-normal">(optional but recommended)</span>
+              </h3>
+              <p class="text-brand-near-black/50 text-sm mb-4 ml-9">Stack on top of your Foundation for fast Map Pack movement.</p>
+              <div class="space-y-3 ml-9">
+                <button data-accel="none" class="accel-btn active w-full bg-white border-2 border-brand-red rounded-xl p-4 text-left transition-all hover:shadow-md">
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <p class="font-bold text-brand-dark">Foundation Only</p>
+                      <p class="text-xs text-brand-near-black/50 mt-1">Permanent authority building — no accelerator</p>
+                    </div>
+                    <p class="text-brand-near-black/40 font-bold">+$0</p>
+                  </div>
+                </button>
+                <button data-accel="neighborhood" class="accel-btn w-full bg-white border-2 border-gray-200 rounded-xl p-4 text-left transition-all hover:shadow-md">
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <p class="font-bold text-brand-dark">Neighborhood Accelerator</p>
+                      <p class="text-xs text-brand-near-black/50 mt-1">25 sq mi · 5×5 grid · Movement in 7–10 days</p>
+                    </div>
+                    <p class="text-brand-red font-bold">+$1,000</p>
+                  </div>
+                </button>
+                <button data-accel="city" class="accel-btn w-full bg-white border-2 border-gray-200 rounded-xl p-4 text-left transition-all hover:shadow-md relative">
+                  <span class="absolute -top-2 right-4 bg-brand-gold text-brand-dark text-xs font-bold px-2 py-0.5 rounded-full">DEFAULT</span>
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <p class="font-bold text-brand-dark">City Accelerator</p>
+                      <p class="text-xs text-brand-near-black/50 mt-1">100 sq mi · 10×10 grid · Full city domination</p>
+                    </div>
+                    <p class="text-brand-red font-bold">+$2,000</p>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 3: Add-ons -->
+            <div class="bg-brand-light-gray rounded-2xl p-6 border border-gray-100">
+              <h3 class="text-lg font-bold mb-1 flex items-center gap-2">
+                <span class="w-7 h-7 bg-brand-red text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
+                Add-Ons <span class="text-brand-near-black/40 text-sm font-normal">(optional)</span>
+              </h3>
+              <div class="space-y-3 ml-9 mt-4">
+                <label class="flex items-center gap-3 bg-white border-2 border-gray-200 rounded-xl p-4 cursor-pointer hover:shadow-md transition-all addon-label">
+                  <input type="checkbox" id="link-building" class="w-5 h-5 accent-brand-red" />
+                  <div class="flex-1">
+                    <p class="font-bold text-brand-dark">Link Building Boost</p>
+                    <p class="text-xs text-brand-near-black/50 mt-1">High-authority backlinks for accelerated domain authority</p>
+                  </div>
+                  <p class="text-brand-red font-bold">+$1,500</p>
+                </label>
+              </div>
+            </div>
+
+            <!-- Step 4: Setup Option -->
+            <div class="bg-brand-light-gray rounded-2xl p-6 border border-gray-100">
+              <h3 class="text-lg font-bold mb-1 flex items-center gap-2">
+                <span class="w-7 h-7 bg-brand-red text-white rounded-full flex items-center justify-center text-sm font-bold">4</span>
+                Launch Option
+              </h3>
+              <p class="text-brand-near-black/50 text-sm mb-4 ml-9">Choose how quickly we deploy your Foundation.</p>
+              <div class="space-y-3 ml-9">
+                <button data-setup="standard" class="setup-btn active w-full bg-white border-2 border-brand-red rounded-xl p-4 text-left transition-all hover:shadow-md">
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <p class="font-bold text-brand-dark">Standard Launch</p>
+                      <p class="text-xs text-brand-near-black/50 mt-1">Full Month 1 buildout over normal 3-month timeline</p>
+                    </div>
+                    <p class="text-brand-red font-bold">$1,500</p>
+                  </div>
+                </button>
+                <button data-setup="accelerated" class="setup-btn w-full bg-white border-2 border-gray-200 rounded-xl p-4 text-left transition-all hover:shadow-md">
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <p class="font-bold text-brand-dark">Accelerated Launch</p>
+                      <p class="text-xs text-brand-near-black/50 mt-1">3 months compressed into 30 days — all signals hit Google at once</p>
+                    </div>
+                    <p class="text-brand-red font-bold">$2,500</p>
+                  </div>
+                </button>
+                <button data-setup="12month" class="setup-btn w-full bg-white border-2 border-gray-200 rounded-xl p-4 text-left transition-all hover:shadow-md relative">
+                  <span class="absolute -top-2 right-4 bg-brand-gold text-brand-dark text-xs font-bold px-2 py-0.5 rounded-full">BEST VALUE</span>
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <p class="font-bold text-brand-dark">12-Month Commitment</p>
+                      <p class="text-xs text-brand-near-black/50 mt-1">Setup fee waived entirely — save $1,500–$2,500 upfront</p>
+                    </div>
+                    <p class="text-green-600 font-bold">$0 setup</p>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Summary Panel (2 cols) -->
+          <div class="lg:col-span-2">
+            <div class="sticky top-24 bg-brand-dark rounded-2xl p-6 text-white shadow-xl">
+              <h3 class="text-lg font-bold mb-4 text-brand-gold font-[family-name:var(--font-ui)]">YOUR PLAN SUMMARY</h3>
+
+              <div class="space-y-3 mb-6 text-sm">
+                <div class="flex justify-between">
+                  <span class="text-brand-medium-gray">Foundation</span>
+                  <span id="summary-foundation" class="font-bold">$1,500/mo</span>
+                </div>
+                <div class="flex justify-between" id="summary-accel-row" style="display:none">
+                  <span class="text-brand-medium-gray" id="summary-accel-label">Accelerator</span>
+                  <span id="summary-accel" class="font-bold">$0/mo</span>
+                </div>
+                <div class="flex justify-between" id="summary-links-row" style="display:none">
+                  <span class="text-brand-medium-gray">Link Building</span>
+                  <span id="summary-links" class="font-bold">$1,500/mo</span>
+                </div>
+                <div class="border-t border-white/20 pt-3 flex justify-between">
+                  <span class="text-white font-bold">Monthly Total</span>
+                  <span id="summary-monthly" class="text-2xl font-extrabold text-brand-gold">$1,500</span>
+                </div>
+              </div>
+
+              <div class="bg-brand-near-black rounded-xl p-4 mb-6">
+                <div class="flex justify-between text-sm mb-1">
+                  <span class="text-brand-medium-gray">Setup Fee</span>
+                  <span id="summary-setup" class="font-bold">$1,500</span>
+                </div>
+                <p id="summary-setup-note" class="text-xs text-brand-medium-gray mt-1">Standard Launch</p>
+              </div>
+
+              <div id="summary-guarantee" class="bg-brand-red/20 rounded-xl p-4 mb-6" style="display:none">
+                <p class="text-sm font-bold text-brand-gold flex items-center gap-2">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                  90-Day Top 3 Guarantee Included
+                </p>
+                <p class="text-xs text-brand-medium-gray mt-1">Your plan qualifies for our Map Pack guarantee.</p>
+              </div>
+
+              <a href="/booking/" class="btn-primary w-full text-center text-lg mb-3">
+                Start My Plan
+              </a>
+              <p class="text-center text-xs text-brand-medium-gray">Free strategy call · No commitment required</p>
+
+              <div class="mt-6 pt-4 border-t border-white/10">
+                <p class="text-xs text-brand-medium-gray leading-relaxed">
+                  Prices shown are monthly recurring. Setup fees are one-time. 12-month commitment waives all setup fees.
+                  90-day guarantee requires Foundation + Accelerator package.
+                  <a href="#faq" class="text-brand-gold underline">See full details →</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10-Day Free Boost -->
+  <section class="bg-brand-soft-red py-16">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">See Results Before You Commit</h2>
+        <p class="text-brand-near-black/70 text-lg leading-relaxed mb-6">
+          Qualified prospects get our <strong>Neighborhood Accelerator activated for 10 days — completely free</strong>. No contract. No commitment. You'll watch your Google Map Pack rankings move in real time. If you don't see results, we shake hands and part ways.
+        </p>
+        <p class="text-brand-near-black/50 text-sm mb-8">
+          Qualification: 15+ Google reviews, 5-star average, verified Google Business Profile.
+        </p>
+        <a href="/booking/" class="btn-primary text-lg">Ask About the Free 10-Day Boost</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 90-Day Guarantee -->
+  <section class="section-dark py-20">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="w-20 h-20 bg-brand-gold/20 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg class="w-10 h-10 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">The 90-Day Top 3 Map Pack Guarantee</h2>
+        <p class="text-brand-medium-gray text-lg leading-relaxed mb-6">
+          We guarantee your primary keyword ranks in the top 3 of the Google Map Pack within 90 days — or we continue working for free until it does (up to an additional 90 days). This isn't a refund. It's continued, full-service SEO at zero cost until we deliver.
+        </p>
+        <p class="text-brand-medium-gray text-lg leading-relaxed mb-8">
+          This guarantee applies to all Foundation + Accelerator packages. Your primary keyword is defined at onboarding and measured as an average ranking of 3.0 or better across your purchased geo-grid radius.
+        </p>
+        <a href="/booking/" class="btn-primary text-lg">Get Guaranteed Results</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Internal Links -->
+  <section class="section-light py-12">
+    <div class="container">
+      <p class="text-center text-brand-near-black/60 text-sm mb-4 font-[family-name:var(--font-ui)]">Complete your growth stack:</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/services/web-design/" class="bg-white rounded-full px-6 py-2 text-sm font-semibold text-brand-dark border border-gray-200 hover:border-brand-red hover:text-brand-red transition-colors">Web Design &rarr;</a>
+        <a href="/services/google-ads/" class="bg-white rounded-full px-6 py-2 text-sm font-semibold text-brand-dark border border-gray-200 hover:border-brand-red hover:text-brand-red transition-colors">Google Ads &rarr;</a>
+        <a href="/services/tv-streaming/" class="bg-white rounded-full px-6 py-2 text-sm font-semibold text-brand-dark border border-gray-200 hover:border-brand-red hover:text-brand-red transition-colors">TV & Streaming &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <div id="faq">
+    <FAQ items={faqs} headline="Local SEO FAQ" />
+  </div>
+
+  <!-- CTA -->
+  <CTASection
+    headline="Stop Losing Leads to Your Competition"
+    subheadline="Every search for 'plumber near me' or 'HVAC repair' that doesn't show your business is money left on the table. Let's fix that — book a free strategy call today."
+    buttonText="Book Your Free Strategy Call"
+    buttonHref="/booking/"
+    secondaryText="Or Call: (813) 000-0000"
+    secondaryHref="tel:+18130000000"
+  />
+
+</PageLayout>
+
+<!-- Interactive Calculator Script -->
+<script is:inline>
+  (function() {
+    // Pricing data from the product plan
+    const pricing = {
+      foundation: { small: 1500, big: 2000 },
+      accelerator: { none: 0, neighborhood: 1000, city: 2000 },
+      linkBuilding: 1500,
+      setup: { standard: 1500, accelerated: 2500, '12month': 0 }
+    };
+
+    // State
+    let state = {
+      market: 'small',
+      accel: 'none',
+      linkBuilding: false,
+      setup: 'standard'
+    };
+
+    // Elements
+    const summaryFoundation = document.getElementById('summary-foundation');
+    const summaryAccelRow = document.getElementById('summary-accel-row');
+    const summaryAccelLabel = document.getElementById('summary-accel-label');
+    const summaryAccel = document.getElementById('summary-accel');
+    const summaryLinksRow = document.getElementById('summary-links-row');
+    const summaryMonthly = document.getElementById('summary-monthly');
+    const summarySetup = document.getElementById('summary-setup');
+    const summarySetupNote = document.getElementById('summary-setup-note');
+    const summaryGuarantee = document.getElementById('summary-guarantee');
+
+    function updateSummary() {
+      const foundationPrice = pricing.foundation[state.market];
+      const accelPrice = pricing.accelerator[state.accel];
+      const linkPrice = state.linkBuilding ? pricing.linkBuilding : 0;
+      const setupPrice = pricing.setup[state.setup];
+      const monthly = foundationPrice + accelPrice + linkPrice;
+
+      summaryFoundation.textContent = '$' + foundationPrice.toLocaleString() + '/mo';
+
+      if (accelPrice > 0) {
+        summaryAccelRow.style.display = 'flex';
+        const accelNames = { neighborhood: 'Neighborhood Accel.', city: 'City Accelerator' };
+        summaryAccelLabel.textContent = accelNames[state.accel] || 'Accelerator';
+        summaryAccel.textContent = '+$' + accelPrice.toLocaleString() + '/mo';
+      } else {
+        summaryAccelRow.style.display = 'none';
+      }
+
+      if (state.linkBuilding) {
+        summaryLinksRow.style.display = 'flex';
+      } else {
+        summaryLinksRow.style.display = 'none';
+      }
+
+      summaryMonthly.textContent = '$' + monthly.toLocaleString();
+
+      if (state.setup === '12month') {
+        summarySetup.textContent = '$0';
+        summarySetup.classList.add('text-green-400');
+        summarySetupNote.textContent = '12-month commitment — setup waived!';
+      } else {
+        summarySetup.textContent = '$' + setupPrice.toLocaleString();
+        summarySetup.classList.remove('text-green-400');
+        const setupNames = { standard: 'Standard Launch', accelerated: 'Accelerated Launch (3mo in 30 days)' };
+        summarySetupNote.textContent = setupNames[state.setup];
+      }
+
+      // Show guarantee if accel is selected
+      if (state.accel !== 'none') {
+        summaryGuarantee.style.display = 'block';
+      } else {
+        summaryGuarantee.style.display = 'none';
+      }
+    }
+
+    // Market buttons
+    document.querySelectorAll('.market-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        state.market = this.dataset.market;
+        document.querySelectorAll('.market-btn').forEach(function(b) {
+          b.classList.remove('active');
+          b.classList.replace('border-brand-red', 'border-gray-200');
+          if (!b.classList.contains('border-gray-200') && !b.classList.contains('border-brand-red')) {
+            b.classList.add('border-gray-200');
+          }
+        });
+        this.classList.add('active');
+        this.classList.remove('border-gray-200');
+        this.classList.add('border-brand-red');
+        // Fix other buttons
+        document.querySelectorAll('.market-btn:not(.active)').forEach(function(b) {
+          b.classList.remove('border-brand-red');
+          b.classList.add('border-gray-200');
+        });
+        updateSummary();
+      });
+    });
+
+    // Accelerator buttons
+    document.querySelectorAll('.accel-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        state.accel = this.dataset.accel;
+        document.querySelectorAll('.accel-btn').forEach(function(b) {
+          b.classList.remove('active');
+          b.classList.remove('border-brand-red');
+          b.classList.add('border-gray-200');
+        });
+        this.classList.add('active');
+        this.classList.remove('border-gray-200');
+        this.classList.add('border-brand-red');
+        updateSummary();
+      });
+    });
+
+    // Setup buttons
+    document.querySelectorAll('.setup-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        state.setup = this.dataset.setup;
+        document.querySelectorAll('.setup-btn').forEach(function(b) {
+          b.classList.remove('active');
+          b.classList.remove('border-brand-red');
+          b.classList.add('border-gray-200');
+        });
+        this.classList.add('active');
+        this.classList.remove('border-gray-200');
+        this.classList.add('border-brand-red');
+        updateSummary();
+      });
+    });
+
+    // Link building checkbox
+    var linkCheckbox = document.getElementById('link-building');
+    if (linkCheckbox) {
+      linkCheckbox.addEventListener('change', function() {
+        state.linkBuilding = this.checked;
+        var label = this.closest('.addon-label');
+        if (this.checked) {
+          label.classList.remove('border-gray-200');
+          label.classList.add('border-brand-red');
+        } else {
+          label.classList.remove('border-brand-red');
+          label.classList.add('border-gray-200');
+        }
+        updateSummary();
+      });
+    }
+
+    // Initialize
+    updateSummary();
+  })();
+</script>

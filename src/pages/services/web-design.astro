@@ -1,0 +1,321 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import CTASection from '../../components/CTASection.astro';
+import FAQ from '../../components/FAQ.astro';
+import TrustSignals from '../../components/TrustSignals.astro';
+
+const faqs = [
+  {
+    question: 'What\'s the difference between Astro and WordPress websites?',
+    answer: 'Astro sites are static, pre-rendered websites that load almost instantly — perfect for businesses that need blazing speed and top-tier SEO performance. WordPress is a content management system that gives you more control over editing content yourself. Both are custom-built by our team. For most home services businesses, <strong>we recommend Astro</strong> because it\'s faster, more secure, cheaper, and scores higher on Google\'s Core Web Vitals.',
+  },
+  {
+    question: 'Can I edit my website myself after it\'s built?',
+    answer: 'Yes. Both options include a content management system. Astro sites use a headless CMS that\'s simple and clean. WordPress comes with its full admin dashboard. We also offer ongoing support if you\'d rather have us handle updates.',
+  },
+  {
+    question: 'How long does it take to build my website?',
+    answer: 'Most projects launch within <strong>4–6 weeks</strong> from kickoff. This includes discovery, design, development, content, and revisions. Rush timelines are available for an additional fee.',
+  },
+  {
+    question: 'Will my website be optimized for SEO?',
+    answer: 'Absolutely. Every website we build includes on-page SEO foundations: proper heading structure, meta tags, schema markup, image optimization, fast load times, mobile responsiveness, and internal linking. If you add our <a href="/services/local-seo/">Local SEO service</a>, we take it even further with ongoing optimization.',
+  },
+  {
+    question: 'What\'s included in the monthly payment option?',
+    answer: 'The monthly option spreads your investment over 12 months with zero interest. You get the same custom-built website — same quality, same features, same timeline. For Astro, it\'s $250/month for 12 months (vs. $2,500 upfront). For WordPress, it\'s $400/month for 12 months (vs. $4,000 upfront).',
+  },
+  {
+    question: 'Do you offer hosting?',
+    answer: 'Yes. Astro sites are hosted on high-performance edge networks (like Netlify or Vercel) — often at no additional hosting cost. WordPress sites are hosted on managed WordPress hosting optimized for speed and security. Hosting details and costs are discussed during your strategy call.',
+  },
+];
+---
+
+<PageLayout
+  title="Web Design for Home Services"
+  description="Custom-built websites for home services businesses. Choose Astro (from $250/mo) or WordPress (from $400/mo). Speed-optimized, conversion-focused, SEO-ready. No templates."
+  canonicalUrl="https://servicelinepro.com/services/web-design/"
+>
+
+  <!-- JSON-LD Schema -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Custom Web Design for Home Services",
+      "provider": {
+        "@type": "Organization",
+        "name": "ServiceLinePro",
+        "url": "https://servicelinepro.com"
+      },
+      "description": "Custom-built Astro and WordPress websites for home services businesses. Speed-optimized, conversion-focused, and SEO-ready.",
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Design Packages",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Custom Astro Website",
+            "price": "2500",
+            "priceCurrency": "USD",
+            "description": "Lightning-fast static website built on Astro. Perfect 100 PageSpeed scores."
+          },
+          {
+            "@type": "Offer",
+            "name": "Custom WordPress Website",
+            "price": "4000",
+            "priceCurrency": "USD",
+            "description": "Full-featured WordPress website with custom theme and admin dashboard."
+          }
+        ]
+      }
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://servicelinepro.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://servicelinepro.com/services/" },
+        { "@type": "ListItem", "position": 3, "name": "Web Design", "item": "https://servicelinepro.com/services/web-design/" }
+      ]
+    })} />
+  </Fragment>
+
+  <!-- Breadcrumb -->
+  <nav class="bg-brand-dark border-b border-white/10" aria-label="Breadcrumb">
+    <div class="container py-3">
+      <ol class="flex items-center gap-2 text-sm font-[family-name:var(--font-ui)]">
+        <li><a href="/" class="text-brand-medium-gray hover:text-white">Home</a></li>
+        <li class="text-brand-medium-gray">/</li>
+        <li><a href="/services/" class="text-brand-medium-gray hover:text-white">Services</a></li>
+        <li class="text-brand-medium-gray">/</li>
+        <li class="text-white">Web Design</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="section-dark relative overflow-hidden">
+    <div class="container py-20 lg:py-28 relative z-10">
+      <div class="max-w-3xl">
+        <p class="text-brand-gold font-semibold text-sm tracking-widest uppercase mb-4 font-[family-name:var(--font-ui)]">
+          Web Design for Home Services
+        </p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+          Your Website Should Be Your<br />
+          <span class="text-gradient">Best Salesperson.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-brand-medium-gray leading-relaxed mb-8 max-w-2xl">
+          We build custom, conversion-optimized websites that turn clicks into booked jobs. No templates. No page builders. Just clean, fast, professional websites built specifically for home services businesses that mean business.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/booking/" class="btn-primary text-lg">Get a Free Website Quote</a>
+          <a href="#pricing" class="btn-secondary text-lg">See Pricing</a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-dark to-brand-red/10 pointer-events-none"></div>
+  </section>
+
+  <!-- Problem / Solution -->
+  <section class="section-light py-20">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Most Home Services Websites Are Costing You Money</h2>
+        <p class="text-brand-near-black/70 text-lg leading-relaxed mb-6">
+          Let's be honest: if your website is slow, looks like it was built in 2015, or doesn't have clear calls-to-action on every page, you're losing leads to your competitors every single day. Homeowners looking for a plumber, HVAC tech, or roofer make snap judgments. If your site doesn't immediately communicate trust, professionalism, and a clear next step — they're hitting the back button and calling someone else.
+        </p>
+        <p class="text-brand-near-black/70 text-lg leading-relaxed mb-6">
+          At ServiceLinePro, we build websites that solve this problem. Every site is custom-designed for your brand, optimized for Google's Core Web Vitals, and engineered to convert visitors into phone calls, form submissions, and booked appointments. We offer two proven platforms to choose from, each with transparent pricing and flexible payment options.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Comparison -->
+  <section class="bg-white py-20" id="pricing">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <p class="text-brand-red font-semibold text-sm tracking-widest uppercase mb-3 font-[family-name:var(--font-ui)]">Transparent Pricing</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Two Options. One Goal: More Booked Jobs.</h2>
+        <p class="text-brand-near-black/60 text-lg">
+          Choose the platform that fits your business. Both are custom-built, fully responsive, SEO-optimized, and designed to convert.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Astro Option (Recommended) -->
+        <div class="relative bg-brand-light-gray rounded-2xl border-2 border-brand-red shadow-xl overflow-hidden">
+          <div class="bg-brand-red text-white text-center py-2 text-sm font-bold tracking-wide font-[family-name:var(--font-ui)]">
+            ⭐ RECOMMENDED — BEST VALUE
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-2">Custom Astro Website</h3>
+            <p class="text-brand-near-black/60 mb-6">Lightning-fast static site technology — the future of web</p>
+
+            <div class="flex items-baseline gap-2 mb-2">
+              <span class="text-4xl font-extrabold text-brand-dark">$2,500</span>
+              <span class="text-brand-near-black/60">upfront</span>
+            </div>
+            <p class="text-brand-near-black/40 text-sm mb-6">
+              or <strong class="text-brand-dark">$250/month</strong> for 12 months (0% interest)
+            </p>
+
+            <ul class="space-y-3 mb-8">
+              {[
+                'Perfect 100/100 Google PageSpeed scores',
+                'Pre-rendered static pages — loads in under 1 second',
+                'Built-in SEO foundations (schema, meta, sitemaps)',
+                'Mobile-first responsive design',
+                'Custom brand design — no templates',
+                'Content management system included',
+                'SSL certificate & security headers',
+                'Click-to-call & form conversion points',
+                '2 rounds of revisions included',
+                'Up to 10 pages (additional pages available)',
+                'Free hosting on edge network (Netlify/Vercel)',
+                'Lower total cost of ownership',
+              ].map((item) => (
+                <li class="flex items-start gap-3 text-sm">
+                  <svg class="w-5 h-5 text-brand-red shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  <span class="text-brand-near-black/70">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <a href="/booking/" class="btn-primary w-full text-center text-lg">Choose Astro — Get Started</a>
+          </div>
+        </div>
+
+        <!-- WordPress Option -->
+        <div class="bg-brand-light-gray rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+          <div class="bg-brand-dark-card text-white text-center py-2 text-sm font-bold tracking-wide font-[family-name:var(--font-ui)]">
+            FULL CMS CONTROL
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-2">Custom WordPress Website</h3>
+            <p class="text-brand-near-black/60 mb-6">The world's most popular CMS — full admin control</p>
+
+            <div class="flex items-baseline gap-2 mb-2">
+              <span class="text-4xl font-extrabold text-brand-dark">$4,000</span>
+              <span class="text-brand-near-black/60">upfront</span>
+            </div>
+            <p class="text-brand-near-black/40 text-sm mb-6">
+              or <strong class="text-brand-dark">$400/month</strong> for 12 months (0% interest)
+            </p>
+
+            <ul class="space-y-3 mb-8">
+              {[
+                'Custom WordPress theme (no page builders)',
+                'Full WordPress admin dashboard',
+                'SEO-optimized with Yoast/RankMath',
+                'Mobile-first responsive design',
+                'Custom brand design — no templates',
+                'Plugin ecosystem for extended functionality',
+                'SSL certificate & security setup',
+                'Click-to-call & form conversion points',
+                '2 rounds of revisions included',
+                'Up to 10 pages (additional pages available)',
+                'Managed WordPress hosting setup',
+                'Ideal if you need blog/e-commerce features',
+              ].map((item) => (
+                <li class="flex items-start gap-3 text-sm">
+                  <svg class="w-5 h-5 text-brand-dark-card shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  <span class="text-brand-near-black/70">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <a href="/booking/" class="btn-primary w-full text-center text-lg !bg-brand-dark-card hover:!bg-brand-near-black">Choose WordPress — Get Started</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why We Recommend Astro -->
+      <div class="mt-12 max-w-3xl mx-auto bg-brand-soft-red rounded-xl p-8 border border-brand-red/20">
+        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+          <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Why We Recommend Astro
+        </h3>
+        <p class="text-brand-near-black/70 leading-relaxed">
+          For most home services businesses, an Astro website is the smarter investment. Here's why: Astro sites are <strong>40–60% faster</strong> than WordPress, score <strong>perfect 100s on Google PageSpeed</strong> (which directly impacts your SEO rankings), require <strong>virtually no maintenance</strong>, and cost <strong>$1,500 less</strong> than a comparable WordPress build. WordPress is a great choice if you need advanced functionality like e-commerce, membership areas, or complex blog workflows — but for a conversion-focused business website, Astro wins on speed, security, SEO, and total cost of ownership.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included -->
+  <section class="section-dark py-20">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">What Every Website Includes</h2>
+        <p class="text-brand-medium-gray text-lg">Regardless of which platform you choose, every ServiceLinePro website is built to the same high standard.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {[
+          { title: 'Conversion-First Design', desc: 'Every page is engineered with clear calls-to-action, click-to-call buttons, and strategic form placements to maximize lead generation.' },
+          { title: 'SEO Foundations Built In', desc: 'Proper heading hierarchy, meta tags, schema markup, image optimization, XML sitemaps, and fast load times — all out of the box.' },
+          { title: 'Mobile-First & Responsive', desc: 'Over 60% of home services searches happen on mobile. Your site will look and perform flawlessly on every device.' },
+          { title: 'Brand-Consistent Design', desc: 'Custom design that matches your brand identity. Your colors, your logo, your personality — not a generic template.' },
+          { title: 'Speed Optimized', desc: 'Fast sites rank higher and convert better. We optimize images, minimize code, and leverage modern hosting for sub-second load times.' },
+          { title: 'Analytics & Tracking', desc: 'Google Analytics, conversion tracking, and call tracking integration so you can measure exactly what your website generates.' },
+        ].map((item) => (
+          <div class="bg-brand-near-black rounded-xl p-6 border border-white/10">
+            <h3 class="text-lg font-bold text-white mb-2">{item.title}</h3>
+            <p class="text-brand-medium-gray text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="bg-white py-20">
+    <div class="container max-w-3xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Our Web Design Process</h2>
+      <div class="space-y-8">
+        {[
+          { step: '01', title: 'Discovery & Strategy Call', desc: 'We learn about your business, your customers, your competition, and your goals. We\'ll recommend the right platform and outline the project scope.' },
+          { step: '02', title: 'Design & Wireframing', desc: 'Our designers create custom mockups for your homepage and key pages. You review and provide feedback before any code is written.' },
+          { step: '03', title: 'Development & Content', desc: 'We build your site with clean, optimized code while our team crafts compelling copy that speaks to your ideal customer.' },
+          { step: '04', title: 'Review & Launch', desc: 'You get two rounds of revisions. Once approved, we handle the full launch — DNS, SSL, analytics, and speed optimization.' },
+          { step: '05', title: 'Ongoing Support', desc: 'Post-launch, we\'re here for updates, edits, and continued optimization. Pair with our <a href="/services/local-seo/" class="text-brand-red font-semibold">Local SEO</a> service for maximum impact.' },
+        ].map((item) => (
+          <div class="flex gap-6 items-start">
+            <div class="w-14 h-14 bg-brand-red/10 rounded-full flex items-center justify-center shrink-0">
+              <span class="text-brand-red font-extrabold text-lg">{item.step}</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2">{item.title}</h3>
+              <p class="text-brand-near-black/60 leading-relaxed"><Fragment set:html={item.desc} /></p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Internal Links -->
+  <section class="section-light py-12">
+    <div class="container">
+      <p class="text-center text-brand-near-black/60 text-sm mb-4 font-[family-name:var(--font-ui)]">Pair your new website with:</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/services/local-seo/" class="bg-white rounded-full px-6 py-2 text-sm font-semibold text-brand-dark border border-gray-200 hover:border-brand-red hover:text-brand-red transition-colors">Local SEO &rarr;</a>
+        <a href="/services/google-ads/" class="bg-white rounded-full px-6 py-2 text-sm font-semibold text-brand-dark border border-gray-200 hover:border-brand-red hover:text-brand-red transition-colors">Google Ads &rarr;</a>
+        <a href="/services/tv-streaming/" class="bg-white rounded-full px-6 py-2 text-sm font-semibold text-brand-dark border border-gray-200 hover:border-brand-red hover:text-brand-red transition-colors">TV & Streaming &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <FAQ items={faqs} headline="Web Design FAQ" />
+
+  <!-- CTA -->
+  <CTASection
+    headline="Ready for a Website That Actually Generates Leads?"
+    subheadline="Book a free strategy call. We'll review your current site, discuss your goals, and recommend the best option for your business — no pressure, no sales pitch."
+    buttonText="Get Your Free Website Quote"
+    buttonHref="/booking/"
+  />
+
+</PageLayout>
