@@ -1,41 +1,70 @@
 ---
 interface Props {
-  headline?: string;
+  headline: string;
   subheadline?: string;
-  buttonText?: string;
-  buttonHref?: string;
+  buttonText: string;
+  buttonHref: string;
   secondaryText?: string;
   secondaryHref?: string;
   dark?: boolean;
 }
 
-const {
-  headline = 'Ready to Dominate Your Local Market?',
-  subheadline = 'Book a free strategy call with our team. We\'ll audit your online presence and show you exactly how to outrank your competitors.',
-  buttonText = 'Book a Free Strategy Call',
-  buttonHref = '/booking/',
-  secondaryText = '',
-  secondaryHref = '',
-  dark = true,
+const { 
+  headline, 
+  subheadline, 
+  buttonText, 
+  buttonHref, 
+  secondaryText, 
+  secondaryHref,
+  dark = true 
 } = Astro.props;
 ---
 
-<section class={dark ? 'section-dark py-20' : 'bg-brand-soft-red py-20'}>
-  <div class="container text-center">
-    <h2 class={`text-3xl md:text-4xl font-bold mb-4 ${dark ? 'text-white' : 'text-brand-dark'}`}>
-      {headline}
-    </h2>
-    <p class={`text-lg max-w-2xl mx-auto mb-8 ${dark ? 'text-brand-medium-gray' : 'text-brand-near-black/70'}`}>
-      {subheadline}
-    </p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <a href={buttonHref} class="btn-primary text-lg">{buttonText}</a>
-      {secondaryText && (
-        <a href={secondaryHref} class={dark ? 'btn-secondary text-lg' : 'btn-secondary text-lg !border-brand-dark !text-brand-dark hover:!bg-brand-dark hover:!text-white'}>{secondaryText}</a>
+<section class={`py-20 relative overflow-hidden ${dark ? 'bg-brand-dark' : 'bg-brand-red'}`}>
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"https://i.etsystatic.com/21887480/r/il/3e8e53/3016062323/il_fullxfull.3016062323_pq18.jpg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"1\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+  </div>
+  
+  <div class="container relative z-10">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-6 leading-tight">
+        {headline}
+      </h2>
+      
+      {subheadline && (
+        <p class="text-lg md:text-xl text-white/80 mb-8 leading-relaxed">
+          {subheadline}
+        </p>
       )}
+      
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a 
+          href={buttonHref} 
+          class={`${dark ? 'btn-primary' : 'bg-white text-brand-red hover:bg-white/90'} text-lg px-8 py-4 rounded-lg font-bold transition-all inline-flex items-center gap-2`}
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          {buttonText}
+        </a>
+        
+        {secondaryText && secondaryHref && (
+          <a 
+            href={secondaryHref} 
+            class="text-white/80 hover:text-white font-semibold text-lg transition-colors inline-flex items-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            {secondaryText}
+          </a>
+        )}
+      </div>
+      
+      <p class="text-white/50 text-sm mt-6">
+        No contracts. No pressure. Just a clear growth plan.
+      </p>
     </div>
-    <p class={`text-sm mt-6 ${dark ? 'text-brand-medium-gray' : 'text-brand-near-black/50'}`}>
-      No contracts. No pressure. Just a clear growth plan.
-    </p>
   </div>
 </section>
