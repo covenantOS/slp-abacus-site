@@ -1,0 +1,180 @@
+backend:
+  name: github
+  repo: covenantOS/servicelinepro-astro
+  branch: main
+  base_url: https://sveltia-cms-auth.servicelinepro.com
+  auth_endpoint: /api/auth
+
+media_folder: public/assets/images
+public_folder: /assets/images
+
+site_url: https://servicelinepro.com
+display_url: https://servicelinepro.com
+logo_url: /assets/logos/serviceline-logo-header.webp
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: '-'
+
+collections:
+  # ──────────────────────────────────────────────
+  # Case Studies
+  # ──────────────────────────────────────────────
+  - name: case_studies
+    label: Case Studies
+    label_singular: Case Study
+    folder: src/content/case_studies
+    create: true
+    slug: '{{slug}}'
+    sortable_fields: ['date', 'title', 'industry']
+    summary: '{{title}} — {{industry}} ({{service}})'
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Slug, name: slug, widget: string }
+      - { label: Client Name, name: client_name, widget: string }
+      - label: Industry
+        name: industry
+        widget: select
+        options:
+          - HVAC
+          - Plumbing
+          - Roofing
+          - Construction
+          - Electrical
+          - Painting
+          - Aluminum
+          - General Contractor
+      - label: Service
+        name: service
+        widget: select
+        options:
+          - { label: Local SEO, value: local-seo }
+          - { label: PPC / Google Ads, value: ppc }
+          - { label: Web Design, value: web-design }
+          - { label: TV / Streaming, value: tv-streaming }
+      - { label: Featured Image, name: featured_image, widget: image, required: false }
+      - { label: Before Metrics, name: before_metrics, widget: text, required: false }
+      - { label: After Metrics, name: after_metrics, widget: text, required: false }
+      - { label: Testimonial, name: testimonial, widget: text, required: false }
+      - { label: Testimonial Author, name: testimonial_author, widget: string, required: false }
+      - { label: Date, name: date, widget: datetime }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: SEO Title, name: seo_title, widget: string, required: false }
+      - { label: SEO Description, name: seo_description, widget: text, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  # ──────────────────────────────────────────────
+  # Blog Posts
+  # ──────────────────────────────────────────────
+  - name: blog_posts
+    label: Blog Posts
+    label_singular: Blog Post
+    folder: src/content/blog_posts
+    create: true
+    slug: '{{slug}}'
+    sortable_fields: ['date', 'title', 'category']
+    summary: '{{title}} — {{category}} ({{date}})'
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Slug, name: slug, widget: string }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Author, name: author, widget: string, default: ServiceLinePro Team }
+      - label: Category
+        name: category
+        widget: select
+        options:
+          - { label: SEO, value: seo }
+          - { label: PPC, value: ppc }
+          - { label: Web Design, value: web-design }
+          - { label: Marketing, value: marketing }
+          - { label: Industry News, value: industry-news }
+      - { label: Featured Image, name: featured_image, widget: image, required: false }
+      - { label: Date, name: date, widget: datetime }
+      - { label: Updated, name: updated, widget: datetime, required: false }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: Tags, name: tags, widget: list, default: [] }
+      - { label: SEO Title, name: seo_title, widget: string, required: false }
+      - { label: SEO Description, name: seo_description, widget: text, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  # ──────────────────────────────────────────────
+  # Industry Pages
+  # ──────────────────────────────────────────────
+  - name: industry_pages
+    label: Industry Pages
+    label_singular: Industry Page
+    folder: src/content/industry_pages
+    create: true
+    slug: '{{slug}}'
+    sortable_fields: ['title', 'industry']
+    summary: '{{industry}} — {{title}}'
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Slug, name: slug, widget: string }
+      - { label: Industry, name: industry, widget: string }
+      - { label: Hero Headline, name: hero_headline, widget: string }
+      - { label: Hero Subheadline, name: hero_subheadline, widget: string, required: false }
+      - { label: Featured Image, name: featured_image, widget: image, required: false }
+      - { label: Services Offered, name: services_offered, widget: list, default: [] }
+      - label: FAQ
+        name: faq
+        widget: list
+        fields:
+          - { label: Question, name: question, widget: string }
+          - { label: Answer, name: answer, widget: text }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: SEO Title, name: seo_title, widget: string, required: false }
+      - { label: SEO Description, name: seo_description, widget: text, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  # ──────────────────────────────────────────────
+  # Location Pages
+  # ──────────────────────────────────────────────
+  - name: location_pages
+    label: Location Pages
+    label_singular: Location Page
+    folder: src/content/location_pages
+    create: true
+    slug: '{{slug}}'
+    sortable_fields: ['title', 'city', 'state']
+    summary: '{{city}}, {{state}} — {{title}}'
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Slug, name: slug, widget: string }
+      - { label: City, name: city, widget: string }
+      - { label: State, name: state, widget: string }
+      - { label: Region, name: region, widget: string, required: false }
+      - { label: Hero Headline, name: hero_headline, widget: string }
+      - { label: Hero Subheadline, name: hero_subheadline, widget: string, required: false }
+      - { label: Featured Image, name: featured_image, widget: image, required: false }
+      - { label: Services Available, name: services_available, widget: list, default: [] }
+      - { label: Local Phone, name: local_phone, widget: string, required: false }
+      - { label: Map Embed, name: map_embed, widget: text, required: false }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: SEO Title, name: seo_title, widget: string, required: false }
+      - { label: SEO Description, name: seo_description, widget: text, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  # ──────────────────────────────────────────────
+  # Team Members
+  # ──────────────────────────────────────────────
+  - name: team_members
+    label: Team Members
+    label_singular: Team Member
+    folder: src/content/team_members
+    create: true
+    slug: '{{slug}}'
+    sortable_fields: ['order', 'name']
+    summary: '{{name}} — {{title}}'
+    fields:
+      - { label: Name, name: name, widget: string }
+      - { label: Slug, name: slug, widget: string }
+      - { label: Job Title, name: title, widget: string }
+      - { label: Photo, name: photo, widget: image, required: false }
+      - { label: Bio, name: bio, widget: text }
+      - { label: LinkedIn, name: linkedin, widget: string, required: false }
+      - { label: Email, name: email, widget: string, required: false }
+      - { label: Display Order, name: order, widget: number, default: 0 }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: Body, name: body, widget: markdown }

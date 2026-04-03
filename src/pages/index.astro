@@ -1,0 +1,136 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+
+<PageLayout title="Home" description="ServiceLinePro — Digital marketing built for home services businesses doing $1M+ annually. Local SEO, PPC, Web Design & TV/Streaming placements. Tampa HQ, national reach.">
+
+  <!-- Hero Section -->
+  <section class="section-dark relative overflow-hidden">
+    <div class="container py-24 lg:py-32">
+      <div class="max-w-3xl">
+        <p class="text-brand-gold font-semibold text-sm tracking-widest uppercase mb-4 font-[family-name:var(--font-ui)]">
+          Digital Marketing for Home Services
+        </p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+          Dominate Your Local Market.
+          <span class="text-gradient">Grow Revenue.</span>
+        </h1>
+        <p class="text-lg text-brand-medium-gray leading-relaxed mb-8 max-w-2xl">
+          We help home services businesses generate more leads, rank higher on Google,
+          and scale profitably with Local SEO, PPC, custom websites, and TV/streaming placements.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/booking/" class="btn-primary text-lg">
+            Book a Free Strategy Call
+          </a>
+          <a href="/case-studies/" class="btn-secondary text-lg">
+            View Case Studies
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Decorative gradient -->
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-dark to-brand-red/10 pointer-events-none"></div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="section-light py-20">
+    <div class="container">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Core Services</h2>
+        <p class="text-brand-medium-gray text-lg">
+          Four pillars of growth designed specifically for home services companies.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Local SEO -->
+        <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+          <div class="w-12 h-12 bg-brand-red/10 rounded-lg flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Local SEO</h3>
+          <p class="text-brand-medium-gray text-sm leading-relaxed">
+            Dominate the Google Map Pack. Our Map Pack Ranker system gets you in the top 3 results.
+          </p>
+          <a href="/services/local-seo/" class="inline-block mt-4 text-brand-red font-semibold text-sm hover:text-brand-coral">
+            Learn More &rarr;
+          </a>
+        </div>
+
+        <!-- PPC -->
+        <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+          <div class="w-12 h-12 bg-brand-red/10 rounded-lg flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Google Ads / PPC</h3>
+          <p class="text-brand-medium-gray text-sm leading-relaxed">
+            No management fees. Our Spectrum partnership delivers exclusive no-fee Google Ads programs.
+          </p>
+          <a href="/services/google-ads/" class="inline-block mt-4 text-brand-red font-semibold text-sm hover:text-brand-coral">
+            Learn More &rarr;
+          </a>
+        </div>
+
+        <!-- Web Design -->
+        <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+          <div class="w-12 h-12 bg-brand-red/10 rounded-lg flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Web Design</h3>
+          <p class="text-brand-medium-gray text-sm leading-relaxed">
+            Custom-built websites on Astro or WordPress. Speed-optimized and conversion-focused. $4K–$10K.
+          </p>
+          <a href="/services/web-design/" class="inline-block mt-4 text-brand-red font-semibold text-sm hover:text-brand-coral">
+            Learn More &rarr;
+          </a>
+        </div>
+
+        <!-- TV/Streaming -->
+        <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+          <div class="w-12 h-12 bg-brand-red/10 rounded-lg flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">TV & Streaming</h3>
+          <p class="text-brand-medium-gray text-sm leading-relaxed">
+            Exclusive Spectrum partnership for targeted TV and streaming ad placements in your service area.
+          </p>
+          <a href="/services/tv-streaming/" class="inline-block mt-4 text-brand-red font-semibold text-sm hover:text-brand-coral">
+            Learn More &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof / CTA -->
+  <section class="section-dark py-20">
+    <div class="container text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        Trusted by Home Services Leaders Nationwide
+      </h2>
+      <p class="text-brand-medium-gray text-lg max-w-2xl mx-auto mb-10">
+        From HVAC to roofing, plumbing to electrical — we’ve helped businesses like yours
+        generate millions in trackable revenue.
+      </p>
+      <div class="flex flex-wrap justify-center gap-8 mb-12">
+        <div class="text-center">
+          <p class="text-4xl font-extrabold text-brand-gold">$2M+</p>
+          <p class="text-brand-medium-gray text-sm mt-1">Revenue Generated</p>
+        </div>
+        <div class="text-center">
+          <p class="text-4xl font-extrabold text-brand-gold">500+</p>
+          <p class="text-brand-medium-gray text-sm mt-1">Keywords Ranked</p>
+        </div>
+        <div class="text-center">
+          <p class="text-4xl font-extrabold text-brand-gold">8+</p>
+          <p class="text-brand-medium-gray text-sm mt-1">Industries Served</p>
+        </div>
+      </div>
+      <a href="/booking/" class="btn-primary text-lg">
+        Start Growing Today
+      </a>
+    </div>
+  </section>
+
+</PageLayout>

@@ -1,0 +1,82 @@
+---
+const navLinks = [
+  { label: 'Services', href: '/services/' },
+  { label: 'Local SEO', href: '/services/local-seo/' },
+  { label: 'Google Ads', href: '/services/google-ads/' },
+  { label: 'Web Design', href: '/services/web-design/' },
+  { label: 'Industries', href: '/industries/' },
+  { label: 'Case Studies', href: '/case-studies/' },
+  { label: 'Blog', href: '/blog/' },
+  { label: 'About', href: '/about/' },
+  { label: 'Contact', href: '/contact/' },
+];
+---
+
+<header class="section-dark sticky top-0 z-50 border-b border-white/10">
+  <div class="container flex items-center justify-between py-4">
+    <!-- Logo -->
+    <a href="/" class="flex items-center">
+      <img
+        src="/assets/logos/serviceline-logo-header.webp"
+        alt="ServiceLinePro"
+        width="180"
+        height="55"
+        class="h-10 w-auto"
+      />
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden lg:flex items-center gap-6" aria-label="Main navigation">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="text-sm font-medium text-white/80 hover:text-white transition-colors font-[family-name:var(--font-ui)]"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a href="/booking/" class="btn-primary text-sm !py-2.5 !px-5">
+        Book Strategy Call
+      </a>
+    </nav>
+
+    <!-- Mobile Menu Toggle -->
+    <button
+      id="mobile-menu-btn"
+      class="lg:hidden text-white p-2"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Nav -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-white/10">
+    <nav class="container py-4 flex flex-col gap-3" aria-label="Mobile navigation">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="text-white/80 hover:text-white py-2 border-b border-white/5 font-[family-name:var(--font-ui)]"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a href="/booking/" class="btn-primary text-center mt-2">
+        Book Strategy Call
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu.classList.contains('hidden');
+    menu.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+</script>
