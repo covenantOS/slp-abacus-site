@@ -1,0 +1,58 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import CTASection from '../../components/CTASection.astro';
+import TrustSignals from '../../components/TrustSignals.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const industry = {
+  name: 'Landscaping',
+  icon: '🌿',
+  headline: 'Landscaping Marketing That Grows Your Business',
+  subheadline: 'Book more hardscape projects, lawn maintenance contracts, and landscape design jobs with marketing that delivers real ROI.',
+  challenges: [
+    'Seasonal business fluctuations',
+    'Differentiating from low-cost competitors',
+    'Selling high-ticket hardscape projects',
+    'Building recurring maintenance contracts'
+  ],
+  services: [
+    { name: 'Landscape Design', icon: '🌺' },
+    { name: 'Hardscaping', icon: '🧱' },
+    { name: 'Lawn Maintenance', icon: '🌱' },
+    { name: 'Irrigation', icon: '💧' },
+    { name: 'Tree Service', icon: '🌳' },
+    { name: 'Commercial', icon: '🏢' }
+  ]
+};
+
+const faqs = [
+  { question: 'How do you help landscapers stand out from cheap competitors?', answer: 'We position you as the premium choice through professional branding, portfolio showcases, and content that emphasizes quality over price. Our clients attract better customers.' },
+  { question: 'Can you help with commercial landscaping leads?', answer: 'Yes! We create B2B strategies targeting property managers, HOAs, and commercial property owners with separate landing pages and campaigns.' },
+  { question: 'How do I get more recurring maintenance contracts?', answer: 'We create retention-focused campaigns and referral systems that turn one-time customers into long-term maintenance contracts.' },
+  { question: 'What does landscaping marketing cost?', answer: 'Local SEO starts at $2,500/mo. Most landscaping clients see significant ROI within the first season. Book a free strategy call for pricing.' }
+];
+---
+
+<PageLayout
+  title="Landscaping Marketing Services | Grow Your Landscaping Business | ServiceLinePro"
+  description="Landscaping marketing that generates real leads. Local SEO, Google Ads, and TV advertising for landscapers. 90-day guarantee. Free strategy call."
+  canonicalUrl="https://servicelinepro.com/industries/landscaping/"
+>
+  <Fragment slot="head"><script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "Service", "name": "Landscaping Marketing Services", "provider": { "@type": "LocalBusiness", "name": "ServiceLinePro" }})} /></Fragment>
+
+  <nav class="bg-white border-b border-gray-200 py-3"><div class="container mx-auto px-4"><ol class="flex items-center gap-2 text-sm text-gray-500"><li><a href="/" class="hover:text-brand-red">Home</a></li><li>/</li><li><a href="/industries/" class="hover:text-brand-red">Industries</a></li><li>/</li><li class="text-brand-red font-medium">{industry.name}</li></ol></div></nav>
+
+  <section class="bg-gradient-to-br from-white via-brand-light-gray to-white py-16 md:py-24"><div class="container mx-auto px-4"><div class="max-w-4xl mx-auto text-center"><div class="text-6xl mb-6">{industry.icon}</div><h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-brand-dark mb-6">{industry.headline}</h1><p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">{industry.subheadline}</p><div class="flex flex-col sm:flex-row gap-4 justify-center"><a href="/booking/" class="btn-primary">Get Your Free Growth Plan →</a><a href="tel:8135213199" class="btn-secondary !border-brand-dark !text-brand-dark hover:!bg-brand-dark hover:!text-white">(813) 521-3199</a></div></div></div></section>
+
+  <TrustSignals />
+
+  <section class="py-16 md:py-20 bg-white"><div class="container mx-auto px-4"><div class="max-w-4xl mx-auto"><h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-dark text-center mb-12">We Understand {industry.name} Marketing Challenges</h2><div class="grid md:grid-cols-2 gap-6">{industry.challenges.map((c) => (<div class="flex gap-4 p-6 bg-brand-light-gray rounded-xl"><div class="w-8 h-8 bg-brand-red/10 rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></div><p class="text-brand-dark font-medium">{c}</p></div>))}</div></div></div></section>
+
+  <section class="py-16 md:py-20 bg-brand-light-gray"><div class="container mx-auto px-4"><div class="max-w-4xl mx-auto"><h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-dark text-center mb-12">{industry.name} Services We Help You Market</h2><div class="grid grid-cols-2 md:grid-cols-3 gap-4">{industry.services.map((s) => (<div class="bg-white rounded-xl p-6 text-center border border-gray-200 hover:border-brand-red hover:shadow-lg transition-all"><span class="text-3xl mb-3 block">{s.icon}</span><p class="font-heading font-bold text-brand-dark">{s.name}</p></div>))}</div></div></div></section>
+
+  <section class="py-16 md:py-20 bg-white"><div class="container mx-auto px-4"><div class="max-w-5xl mx-auto"><h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-dark text-center mb-12">How We Help {industry.name} Companies Grow</h2><div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"><a href="/services/local-seo/" class="block bg-white rounded-2xl p-6 border-2 border-gray-200 hover:border-brand-red transition-all group"><div class="text-4xl mb-4">📍</div><h3 class="font-heading font-bold text-brand-dark mb-2 group-hover:text-brand-red">Local SEO</h3><p class="text-gray-600 text-sm">Rank #1 in Google Maps.</p></a><a href="/services/ppc/" class="block bg-white rounded-2xl p-6 border-2 border-gray-200 hover:border-brand-red transition-all group"><div class="text-4xl mb-4">📈</div><h3 class="font-heading font-bold text-brand-dark mb-2 group-hover:text-brand-red">Google Ads</h3><p class="text-gray-600 text-sm">Get leads from day one.</p></a><a href="/services/web-design/" class="block bg-white rounded-2xl p-6 border-2 border-gray-200 hover:border-brand-red transition-all group"><div class="text-4xl mb-4">💻</div><h3 class="font-heading font-bold text-brand-dark mb-2 group-hover:text-brand-red">Web Design</h3><p class="text-gray-600 text-sm">Websites that convert.</p></a><a href="/services/tv-streaming/" class="block bg-white rounded-2xl p-6 border-2 border-gray-200 hover:border-brand-red transition-all group"><div class="text-4xl mb-4">📺</div><h3 class="font-heading font-bold text-brand-dark mb-2 group-hover:text-brand-red">TV & Streaming</h3><p class="text-gray-600 text-sm">Build brand awareness.</p></a></div></div></div></section>
+
+  <section class="py-16 md:py-20 bg-brand-light-gray"><div class="container mx-auto px-4"><FAQ items={faqs} headline={`${industry.name} Marketing FAQs`} /></div></section>
+
+  <CTASection headline={`Ready to Dominate ${industry.name} Marketing?`} subheadline="Get a free growth plan customized for your business." buttonText="Book Your Free Strategy Call →" buttonHref="/booking/" secondaryText="Call (813) 521-3199" secondaryHref="tel:8135213199" />
+</PageLayout>

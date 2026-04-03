@@ -1,19 +1,335 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import CTASection from '../components/CTASection.astro';
 ---
 
-<PageLayout title="Book a Strategy Call" description="Schedule a free strategy call with ServiceLinePro to discuss growing your home services business.">
-  <section class="section-dark py-20">
-    <div class="container">
-      <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Book a Strategy Call</h1>
-      <p class="text-brand-medium-gray text-lg max-w-2xl">
-        Let's discuss how we can help your business grow.
-      </p>
+<PageLayout
+  title="Book a Free Strategy Call | ServiceLinePro"
+  description="Schedule your free 30-minute strategy call with ServiceLinePro. Get a custom growth plan for your home services business — no contracts, no pressure."
+  canonicalUrl="https://servicelinepro.com/booking/"
+>
+  <!-- JSON-LD Schema -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Book a Strategy Call",
+      "description": "Schedule a free strategy call with ServiceLinePro to discuss growing your home services business.",
+      "url": "https://servicelinepro.com/booking/",
+      "mainEntity": {
+        "@type": "Service",
+        "name": "Free Strategy Call",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "ServiceLinePro",
+          "telephone": "(813) 521-3199"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "30-minute consultation"
+        }
+      }
+    })} />
+  </Fragment>
+
+  <!-- Breadcrumb -->
+  <nav class="bg-brand-dark/95 border-b border-white/10 py-3">
+    <div class="container mx-auto px-4">
+      <ol class="flex items-center gap-2 text-sm text-gray-400">
+        <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+        <li class="text-gray-600">/</li>
+        <li class="text-brand-red font-medium">Book Strategy Call</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-brand-dark via-brand-dark to-brand-near-black py-16 md:py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 bg-brand-gold/10 text-brand-gold px-4 py-2 rounded-full text-sm font-semibold mb-6">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          100% Free • No Obligation
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight">
+          Get Your Free<br />
+          <span class="text-brand-red">Growth Plan</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+          See how we can help you dominate your market in 90 days. No contracts. No pressure. Just a clear growth plan.
+        </p>
+      </div>
     </div>
   </section>
-  <section class="py-16">
-    <div class="container">
-      <p class="text-lg text-brand-near-black">Booking form coming soon.</p>
+
+  <!-- Booking Form Section -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-5 gap-12">
+
+          <!-- What to Expect Column -->
+          <div class="lg:col-span-2 order-2 lg:order-1">
+            <h2 class="text-2xl font-heading font-bold text-brand-dark mb-6">What to Expect</h2>
+            
+            <!-- Steps -->
+            <div class="space-y-6 mb-10">
+              <div class="flex gap-4">
+                <div class="w-10 h-10 bg-brand-red rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">1</div>
+                <div>
+                  <h3 class="font-heading font-bold text-brand-dark mb-1">We Research Your Market</h3>
+                  <p class="text-gray-600 text-sm">Before the call, we analyze your competition, local market, and current online presence.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="w-10 h-10 bg-brand-red rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">2</div>
+                <div>
+                  <h3 class="font-heading font-bold text-brand-dark mb-1">30-Minute Strategy Call</h3>
+                  <p class="text-gray-600 text-sm">We discuss your goals, challenges, and budget. You get honest advice — even if we're not the right fit.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="w-10 h-10 bg-brand-red rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">3</div>
+                <div>
+                  <h3 class="font-heading font-bold text-brand-dark mb-1">Custom Growth Plan</h3>
+                  <p class="text-gray-600 text-sm">Within 48 hours, receive a personalized marketing roadmap with specific recommendations and ROI projections.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Why Us Cards -->
+            <div class="space-y-4">
+              <div class="bg-brand-light-gray rounded-xl p-5 border border-gray-200">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="text-2xl">🎯</span>
+                  <h3 class="font-heading font-bold text-brand-dark">90-Day Top 3 Guarantee</h3>
+                </div>
+                <p class="text-gray-600 text-sm">Rank in Google's Map Pack or don't pay. We're that confident.</p>
+              </div>
+              <div class="bg-brand-light-gray rounded-xl p-5 border border-gray-200">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="text-2xl">📝</span>
+                  <h3 class="font-heading font-bold text-brand-dark">No Contracts</h3>
+                </div>
+                <p class="text-gray-600 text-sm">Month-to-month service. We earn your business every single month.</p>
+              </div>
+              <div class="bg-brand-light-gray rounded-xl p-5 border border-gray-200">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="text-2xl">📺</span>
+                  <h3 class="font-heading font-bold text-brand-dark">Spectrum Partnership</h3>
+                </div>
+                <p class="text-gray-600 text-sm">Access TV & streaming ads with free videography for Florida clients.</p>
+              </div>
+            </div>
+
+            <!-- Quick Call Option -->
+            <div class="mt-8 p-6 bg-brand-dark rounded-xl text-center">
+              <p class="text-gray-400 text-sm mb-2">Prefer to talk now?</p>
+              <a href="tel:8135213199" class="text-white font-heading font-bold text-2xl hover:text-brand-red transition-colors">(813) 521-3199</a>
+              <p class="text-gray-500 text-xs mt-2">Mon–Fri 7am–7pm EST • Sat 11am–5pm</p>
+            </div>
+          </div>
+
+          <!-- Booking Form Column -->
+          <div class="lg:col-span-3 order-1 lg:order-2">
+            <div class="bg-white rounded-2xl p-8 md:p-10 border-2 border-brand-red/20 shadow-2xl shadow-brand-red/5">
+              <h2 class="text-2xl font-heading font-bold text-brand-dark mb-2">Book Your Free Strategy Call</h2>
+              <p class="text-gray-600 mb-8">Fill out the form below and we'll reach out within 1 business day to schedule your call.</p>
+
+              <form id="booking-form" class="space-y-6" action="#" method="POST">
+                <!-- Name Row -->
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label for="first-name" class="block text-sm font-semibold text-brand-dark mb-1.5">Your Name <span class="text-brand-red">*</span></label>
+                    <input
+                      type="text"
+                      id="first-name"
+                      name="name"
+                      required
+                      placeholder="John Smith"
+                      class="w-full px-4 py-3 border border-gray-300 rounded-xl text-brand-dark placeholder-gray-400 focus:ring-2 focus:ring-brand-red/30 focus:border-brand-red transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label for="email" class="block text-sm font-semibold text-brand-dark mb-1.5">Email <span class="text-brand-red">*</span></label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      placeholder="john@example.com"
+                      class="w-full px-4 py-3 border border-gray-300 rounded-xl text-brand-dark placeholder-gray-400 focus:ring-2 focus:ring-brand-red/30 focus:border-brand-red transition-colors"
+                    />
+                  </div>
+                </div>
+
+                <!-- Phone & Company -->
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label for="phone" class="block text-sm font-semibold text-brand-dark mb-1.5">Phone Number <span class="text-brand-red">*</span></label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      required
+                      placeholder="(555) 123-4567"
+                      class="w-full px-4 py-3 border border-gray-300 rounded-xl text-brand-dark placeholder-gray-400 focus:ring-2 focus:ring-brand-red/30 focus:border-brand-red transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label for="company" class="block text-sm font-semibold text-brand-dark mb-1.5">Company Name <span class="text-brand-red">*</span></label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      required
+                      placeholder="ABC Plumbing"
+                      class="w-full px-4 py-3 border border-gray-300 rounded-xl text-brand-dark placeholder-gray-400 focus:ring-2 focus:ring-brand-red/30 focus:border-brand-red transition-colors"
+                    />
+                  </div>
+                </div>
+
+                <!-- Industry Dropdown -->
+                <div>
+                  <label for="industry" class="block text-sm font-semibold text-brand-dark mb-1.5">Select Your Industry <span class="text-brand-red">*</span></label>
+                  <select
+                    id="industry"
+                    name="industry"
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-xl text-brand-dark focus:ring-2 focus:ring-brand-red/30 focus:border-brand-red transition-colors bg-white"
+                  >
+                    <option value="">Choose your industry...</option>
+                    <option value="hvac">HVAC</option>
+                    <option value="plumbing">Plumbing</option>
+                    <option value="roofing">Roofing</option>
+                    <option value="electrical">Electrical</option>
+                    <option value="landscaping">Landscaping</option>
+                    <option value="garage-doors">Garage Doors</option>
+                    <option value="windows-doors">Windows & Doors</option>
+                    <option value="painting">Painting</option>
+                    <option value="pest-control">Pest Control</option>
+                    <option value="pool-services">Pool Services</option>
+                    <option value="other">Other Home Services</option>
+                  </select>
+                </div>
+
+                <!-- Service Interest -->
+                <div>
+                  <label for="service" class="block text-sm font-semibold text-brand-dark mb-1.5">What Are You Interested In?</label>
+                  <select
+                    id="service"
+                    name="service_interest"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-xl text-brand-dark focus:ring-2 focus:ring-brand-red/30 focus:border-brand-red transition-colors bg-white"
+                  >
+                    <option value="">Choose a service...</option>
+                    <option value="local-seo">Local SEO / Map Pack Domination</option>
+                    <option value="ppc">PPC / Google Ads</option>
+                    <option value="web-design">Website Design</option>
+                    <option value="tv-streaming">TV & Streaming Ads</option>
+                    <option value="full-service">Full Marketing Package</option>
+                    <option value="not-sure">Not Sure — Need Guidance</option>
+                  </select>
+                </div>
+
+                <!-- Message -->
+                <div>
+                  <label for="goals" class="block text-sm font-semibold text-brand-dark mb-1.5">What Are Your Biggest Marketing Challenges?</label>
+                  <textarea
+                    id="goals"
+                    name="goals"
+                    rows="3"
+                    placeholder="Tell us about your current situation and what success looks like for your business..."
+                    class="w-full px-4 py-3 border border-gray-300 rounded-xl text-brand-dark placeholder-gray-400 focus:ring-2 focus:ring-brand-red/30 focus:border-brand-red transition-colors resize-none"
+                  ></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button
+                  type="submit"
+                  class="w-full btn-primary py-4 text-lg font-bold rounded-xl"
+                >
+                  Get My Free Strategy Call →
+                </button>
+
+                <!-- Trust Copy -->
+                <div class="flex flex-wrap items-center justify-center gap-4 text-xs text-gray-500 pt-2">
+                  <span class="flex items-center gap-1">🔒 Your info is secure</span>
+                  <span class="hidden md:inline">•</span>
+                  <span>No spam, ever</span>
+                  <span class="hidden md:inline">•</span>
+                  <span>Response within 1 business day</span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Trust Bar -->
+  <section class="bg-brand-light-gray py-12 border-y border-gray-200">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <p class="text-3xl font-heading font-bold text-brand-red mb-1">90-Day</p>
+          <p class="text-sm text-gray-600">Top 3 Guarantee</p>
+        </div>
+        <div>
+          <p class="text-3xl font-heading font-bold text-brand-dark mb-1">500+</p>
+          <p class="text-sm text-gray-600">Keywords Ranked</p>
+        </div>
+        <div>
+          <p class="text-3xl font-heading font-bold text-brand-dark mb-1">8+</p>
+          <p class="text-sm text-gray-600">Industries Served</p>
+        </div>
+        <div>
+          <p class="text-3xl font-heading font-bold text-brand-gold mb-1">4.9/5</p>
+          <p class="text-sm text-gray-600">Google Rating</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <CTASection
+    headline="Still Have Questions?"
+    subheadline="No problem — give us a call anytime. We're happy to chat about your business even if you're not ready to commit."
+    buttonText="Call (813) 521-3199"
+    buttonHref="tel:8135213199"
+    secondaryText="View Our Services"
+    secondaryHref="/services/"
+  />
+
 </PageLayout>
+
+<script>
+  // Form submission handler
+  const form = document.getElementById('booking-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) {
+        btn.textContent = 'Submitting...';
+        btn.setAttribute('disabled', 'true');
+        // Simulate submission - replace with actual endpoint
+        setTimeout(() => {
+          form.innerHTML = `
+            <div class="text-center py-8">
+              <div class="text-6xl mb-4">🎉</div>
+              <h3 class="text-2xl font-heading font-bold text-brand-dark mb-3">You're All Set!</h3>
+              <p class="text-gray-600 mb-6">Thank you for booking a strategy call. We'll review your information and reach out within 1 business day to confirm your call time.</p>
+              <div class="bg-brand-light-gray rounded-xl p-6 max-w-sm mx-auto">
+                <p class="text-sm text-gray-600 mb-2">Can't wait? Call us directly:</p>
+                <a href="tel:8135213199" class="text-brand-red font-heading font-bold text-xl hover:text-brand-coral transition-colors">(813) 521-3199</a>
+              </div>
+            </div>
+          `;
+        }, 1000);
+      }
+    });
+  }
+</script>
