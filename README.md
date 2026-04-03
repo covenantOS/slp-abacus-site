@@ -1,43 +1,74 @@
-# Astro Starter Kit: Minimal
+# ServiceLinePro — Astro Website
 
-```sh
-npm create astro@latest -- --template minimal
+High-performance marketing website for ServiceLinePro, built with [Astro](https://astro.build), Tailwind CSS v4, and Sveltia CMS.
+
+## Tech Stack
+
+- **Framework:** Astro 5.x (static output)
+- **Styling:** Tailwind CSS v4 via `@tailwindcss/vite`
+- **CMS:** Sveltia CMS (Git-based, headless)
+- **Integrations:** `@astrojs/sitemap`, `@astrojs/mdx`
+
+## Local Development
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Site runs at `http://localhost:4321`.
 
-## 🚀 Project Structure
+## Build
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run build
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Static output is generated in the `dist/` directory.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Deployment — Cloudflare Pages
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Steps
 
-## 🧞 Commands
+1. **Connect GitHub repo** — In the Cloudflare dashboard go to **Workers & Pages → Create → Pages → Connect to Git** and select the `covenantOS/slp-abacus-site` repository.
+2. **Configure build settings:**
+   - **Build command:** `npm run build`
+   - **Build output directory:** `dist`
+   - **Node.js version:** Set environment variable `NODE_VERSION` = `20` (or later)
+3. **Deploy** — Cloudflare will build and deploy on every push to `main`.
+4. **Custom domain** — In the Pages project settings, add `servicelinepro.com` and `www.servicelinepro.com` as custom domains. Cloudflare will provision SSL automatically.
 
-All commands are run from the root of the project, from a terminal:
+### Environment Variables (if needed)
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Variable | Value | Notes |
+|---|---|---|
+| `NODE_VERSION` | `20` | Ensures compatible Node runtime |
 
-## 👀 Want to learn more?
+### Preview Deployments
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Every pull request automatically gets a unique preview URL (e.g., `<hash>.slp-abacus-site.pages.dev`). Use these for QA before merging.
+
+## Project Structure
+
+```
+src/
+├── components/    # Reusable Astro components
+├── content/       # CMS-managed content collections
+├── layouts/       # Page layouts (BaseLayout, PageLayout)
+├── pages/         # File-based routing
+│   ├── services/  # Service pages (local-seo, ppc, web-design, tv-streaming)
+│   └── ...        # About, Contact, Blog, Case Studies, etc.
+└── styles/        # Global CSS & Tailwind theme
+public/
+├── admin/         # Sveltia CMS admin panel
+├── images/        # Static images
+└── robots.txt     # Search engine directives
+```
+
+## CMS Access
+
+See [CMS_GUIDE.md](./CMS_GUIDE.md) for Sveltia CMS login and content editing instructions.
+
+## Redirect Strategy
+
+See [REDIRECT_STRATEGY.md](./REDIRECT_STRATEGY.md) for the 301 redirect plan to preserve SEO equity from the previous site.

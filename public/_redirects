@@ -1,0 +1,15 @@
+# 301 Redirects — ServiceLinePro URL Migration
+# Add old-site URLs here before launch (see REDIRECT_STRATEGY.md)
+#
+# Format: /old-path /new-path 301
+
+# Service pages (add actual old URLs after crawl audit)
+# /seo-services              /services/local-seo   301
+# /google-ads                /services/ppc          301
+# /web-design-services       /services/web-design   301
+# /tv-advertising            /services/tv-streaming 301
+
+# Core pages
+# /about-us                  /about                 301
+# /contact-us                /contact               301
+# /book-a-call               /booking               301
