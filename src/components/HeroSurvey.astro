@@ -1,0 +1,102 @@
+---
+// Multi-step survey form that replaces the simple hero form
+---
+
+<div class="bg-white rounded-2xl shadow-xl border border-brand-soft-gray p-8 max-w-md ml-auto">
+  <div class="text-center mb-6">
+    <h2 class="text-2xl font-bold text-brand-dark mb-2">Get Your Free Growth Plan</h2>
+    <p class="text-brand-medium-gray text-sm">Answer a few questions — takes 30 seconds</p>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="flex gap-2 mb-6">
+    <div class="h-1 flex-1 rounded-full bg-brand-red transition-all" id="prog-1"></div>
+    <div class="h-1 flex-1 rounded-full bg-brand-soft-gray transition-all" id="prog-2"></div>
+    <div class="h-1 flex-1 rounded-full bg-brand-soft-gray transition-all" id="prog-3"></div>
+  </div>
+
+  <form id="hero-survey" novalidate>
+    <!-- Step 1: Name + Business -->
+    <div class="survey-step active" data-step="1">
+      <p class="text-xs text-brand-medium-gray uppercase tracking-wider font-semibold mb-4">Step 1 of 3</p>
+      <div class="space-y-4">
+        <input type="text" name="name" placeholder="Your Name" required class="form-input" />
+        <input type="text" name="business" placeholder="Business Name" required class="form-input" />
+      </div>
+      <button type="button" class="btn-primary w-full mt-6 py-3.5 survey-next" data-next="2">
+        Continue →
+      </button>
+    </div>
+
+    <!-- Step 2: Email + Phone -->
+    <div class="survey-step" data-step="2">
+      <p class="text-xs text-brand-medium-gray uppercase tracking-wider font-semibold mb-4">Step 2 of 3</p>
+      <div class="space-y-4">
+        <input type="email" name="email" placeholder="Email Address" required class="form-input" />
+        <input type="tel" name="phone" placeholder="Phone Number" required class="form-input" />
+      </div>
+      <div class="flex gap-3 mt-6">
+        <button type="button" class="btn-secondary flex-1 py-3.5 survey-back" data-back="1">← Back</button>
+        <button type="button" class="btn-primary flex-1 py-3.5 survey-next" data-next="3">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Website + Service -->
+    <div class="survey-step" data-step="3">
+      <p class="text-xs text-brand-medium-gray uppercase tracking-wider font-semibold mb-4">Step 3 of 3</p>
+      <div class="space-y-4">
+        <input type="url" name="website" placeholder="Website URL (optional)" class="form-input" />
+        <select name="service" class="form-input" required>
+          <option value="" disabled selected>Service Interested In</option>
+          <option value="local-seo">Local SEO & Map Pack</option>
+          <option value="google-ads">Google Ads & PPC</option>
+          <option value="web-design">Custom Web Design</option>
+          <option value="tv-streaming">TV & Streaming Ads</option>
+          <option value="full-service">Full-Service Package</option>
+          <option value="not-sure">Not Sure Yet</option>
+        </select>
+      </div>
+      <div class="flex gap-3 mt-6">
+        <button type="button" class="btn-secondary flex-1 py-3.5 survey-back" data-back="2">← Back</button>
+        <button type="submit" class="btn-primary flex-1 py-3.5">Book Strategy Call →</button>
+      </div>
+    </div>
+  </form>
+
+  <p class="text-center text-xs text-brand-medium-gray mt-4">
+    No contracts. No pressure. Just a clear growth plan.
+  </p>
+</div>
+
+<script is:inline>
+  (function() {
+    const form = document.getElementById('hero-survey');
+    if (!form) return;
+
+    function showStep(n) {
+      form.querySelectorAll('.survey-step').forEach(s => s.classList.remove('active'));
+      const target = form.querySelector(`[data-step="${n}"]`);
+      if (target) target.classList.add('active');
+      // Update progress bars
+      for (let i = 1; i <= 3; i++) {
+        const bar = document.getElementById(`prog-${i}`);
+        if (bar) {
+          bar.style.backgroundColor = i <= n ? 'var(--color-brand-red)' : 'var(--color-brand-soft-gray)';
+        }
+      }
+    }
+
+    form.querySelectorAll('.survey-next').forEach(btn => {
+      btn.addEventListener('click', () => showStep(parseInt(btn.dataset.next)));
+    });
+
+    form.querySelectorAll('.survey-back').forEach(btn => {
+      btn.addEventListener('click', () => showStep(parseInt(btn.dataset.back)));
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      window.location.href = '/booking/';
+    });
+  })();
+</script>

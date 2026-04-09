@@ -22,9 +22,12 @@
   
   /* Accent colors */
   --color-brand-medium-gray: #6B7280;
-  --color-brand-gold: #D97706;
+  --color-brand-gold: #C8980A;
+  --color-brand-light-blue: #81dde3;
+  --color-brand-light-blue-dark: #62c2dc;
   --color-brand-coral: #DC2626;
   --color-brand-dark-card: #1F2937;
+  --color-brand-soft-blue: #E8F8F9;
 
   /* Typography */
   --font-heading: 'Montserrat', sans-serif;
@@ -345,6 +348,86 @@
   }
   .form-input::placeholder {
     color: var(--color-brand-medium-gray);
+  }
+
+  /* Accent button - light blue */
+  .btn-accent {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2rem;
+    background-color: var(--color-brand-light-blue);
+    color: var(--color-brand-dark);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  .btn-accent:hover {
+    background-color: var(--color-brand-light-blue-dark);
+    color: var(--color-brand-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(129, 221, 227, 0.35);
+  }
+
+  /* Gold button variant */
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.5rem;
+    background-color: var(--color-brand-gold);
+    color: var(--color-brand-white);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  .btn-gold:hover {
+    background-color: #b5870a;
+    color: var(--color-brand-white);
+    transform: translateY(-1px);
+  }
+
+  /* Badge light blue */
+  .badge-blue {
+    background-color: var(--color-brand-soft-blue);
+    color: #0e7490;
+  }
+
+  /* Sliding banner animation */
+  @keyframes slideText {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+  .sliding-text {
+    animation: slideText 18s linear infinite;
+  }
+
+  /* Multi-step form */
+  .survey-step {
+    display: none;
+  }
+  .survey-step.active {
+    display: block;
+    animation: fadeInStep 0.3s ease-out;
+  }
+  @keyframes fadeInStep {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Reviews carousel */
+  .reviews-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.5s ease;
   }
 
   /* Icon container - for industry icons */

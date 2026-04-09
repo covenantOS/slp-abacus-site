@@ -3,6 +3,8 @@ import PageLayout from '../layouts/PageLayout.astro';
 import CTASection from '../components/CTASection.astro';
 import FAQ from '../components/FAQ.astro';
 import IndustryIcon from '../components/IndustryIcon.astro';
+import SlidingBanner from '../components/SlidingBanner.astro';
+import HeroSurvey from '../components/HeroSurvey.astro';
 
 const homeFaqs = [
   {
@@ -25,13 +27,6 @@ const homeFaqs = [
     question: 'Do you serve businesses outside of Florida?',
     answer: 'Absolutely. Our headquarters are in Tampa, FL, but we serve home services businesses nationwide. Our Local SEO, PPC, and web design services work in any market. TV/streaming advertising through our Spectrum partnership is available in Spectrum service areas across the country.',
   },
-];
-
-const stats = [
-  { value: "500+", label: "Keywords Ranked" },
-  { value: "47", label: "Avg. Days to Top 3" },
-  { value: "$12M+", label: "Revenue Generated" },
-  { value: "98%", label: "Client Retention" }
 ];
 
 const services = [
@@ -81,69 +76,52 @@ const industries = [
   { name: 'Pool Services', slug: 'pool-services', href: '/industries/pool-services/' },
 ];
 
-const testimonials = [
-  {
-    name: "Mike Johnson",
-    company: "Johnson's HVAC Solutions",
-    industry: "HVAC",
-    location: "Tampa, FL",
-    image: "/assets/images/testimonials/client-mike-johnson.jpg",
-    quote: "We went from page 3 to #1 in the Map Pack in just 47 days. Our phone hasn't stopped ringing. ServiceLinePro understands HVAC marketing like no other agency I've worked with.",
-    result: "#1 Map Pack in 47 Days",
-    metric: "+340% Leads"
-  },
-  {
-    name: "Robert Chen",
-    company: "Premier Plumbing Pro",
-    industry: "Plumbing",
-    location: "Orlando, FL",
-    image: "/assets/images/testimonials/client-robert-chen.jpg",
-    quote: "The combination of SEO and their Spectrum TV partnership has transformed our business. We're now the most recognized plumbing company in our area.",
-    result: "285% Traffic Increase",
-    metric: "$1.8M Revenue"
-  },
-  {
-    name: "David Martinez",
-    company: "Clearwater Elite Roofing",
-    industry: "Roofing",
-    location: "Clearwater, FL",
-    image: "/assets/images/testimonials/client-david-martinez.jpg",
-    quote: "I was skeptical about the 90-day guarantee, but they delivered. Now we're dominating 3 cities with their multi-location strategy. Best marketing investment we've made.",
-    result: "#1 in 3 Cities",
-    metric: "+$1.2M New Revenue"
-  }
-];
-
-const caseStudies = [
-  {
-    title: "Tampa HVAC Company",
-    metric: "#1 in Map Pack",
-    timeframe: "47 Days",
-    industry: "HVAC",
-    services: ["Local SEO", "Web Design"]
-  },
-  {
-    title: "Orlando Plumbing Pro",
-    metric: "+285% Organic Traffic",
-    timeframe: "90 Days",
-    industry: "Plumbing",
-    services: ["Local SEO", "PPC"]
-  },
-  {
-    title: "Clearwater Roofing",
-    metric: "$1.2M New Revenue",
-    timeframe: "6 Months",
-    industry: "Roofing",
-    services: ["TV Ads", "Local SEO"]
-  }
-];
-
 const guaranteeTerms = [
   "Primary keyword must be achievable (we'll assess during strategy call)",
   "Client maintains 4+ star Google rating during campaign",
   "Client responds to review requests within 48 hours",
   "No other SEO providers working on the same properties",
   "Google Business Profile access provided within 3 business days"
+];
+
+/* Case Study data for the two large cards */
+const caseStudyCards = [
+  {
+    company: "Tampa Bay HVAC Co.",
+    industry: "HVAC",
+    tagColor: "#cf312b",
+    quoteColor: "#cf312b",
+    image: "/assets/images/services/seo-dashboard.png",
+    quote: "ServiceLinePro got us to #1 in the Map Pack in under 50 days. Our phone volume doubled almost overnight.",
+    quoteName: "Mike J., Owner",
+    metric1: { value: "+427%", label: "Top 10 Keywords" },
+    metric2: { value: "+68%", label: "Organic Conversions" },
+    description: "A mid-size HVAC company in Tampa struggling to compete in a saturated market. Within 47 days of launching the Foundation + Accelerator plan, they reached #1 for their primary keyword.",
+    href: "/case-studies/"
+  },
+  {
+    company: "Premier Plumbing Pro",
+    industry: "Plumbing",
+    tagColor: "#62c2dc",
+    quoteColor: "#0e7490",
+    image: "/assets/images/services/seo-dashboard.png",
+    quote: "The Spectrum TV partnership combined with SEO made us the most recognized plumber in Central Florida. Game changer.",
+    quoteName: "Robert C., CEO",
+    metric1: { value: "+285%", label: "Organic Traffic" },
+    metric2: { value: "$1.8M", label: "Revenue Generated" },
+    description: "A plumbing company in Orlando that paired Local SEO with TV & Streaming advertising to dominate their market across three cities in 6 months.",
+    href: "/case-studies/"
+  }
+];
+
+/* Reviews data */
+const reviews = [
+  { name: "Mike Johnson", rating: 5, text: "Went from page 3 to #1 in the Map Pack in 47 days. Our phone hasn't stopped ringing since.", business: "HVAC Company" },
+  { name: "Robert Chen", rating: 5, text: "The combination of SEO and TV advertising has completely transformed our plumbing business. Best investment we've made.", business: "Plumbing Service" },
+  { name: "David Martinez", rating: 5, text: "I was skeptical about the 90-day guarantee, but they delivered. Now we're dominating 3 cities.", business: "Roofing Company" },
+  { name: "Sarah Williams", rating: 5, text: "Professional, transparent, and they actually deliver results. No more wasted money on agencies that overpromise.", business: "Electrical Contractor" },
+  { name: "James Peterson", rating: 5, text: "The custom website they built converts 3x better than our old one. Plus the SEO has us ranking everywhere.", business: "Pest Control" },
+  { name: "Tom Bradley", rating: 5, text: "Free videography through the Spectrum partnership was incredible. Our TV commercial looks amazing.", business: "Garage Door Service" },
 ];
 ---
 
@@ -184,65 +162,89 @@ const guaranteeTerms = [
   </Fragment>
 
   <!-- ============================================
-       HERO SECTION - With Hero Image & Simplified Form
+       1. SLIDING BANNER (above header)
        ============================================ -->
-  <section class="bg-brand-off-white min-h-[90vh] flex items-center relative overflow-hidden">
-    <!-- Hero background image overlay -->
-    <div class="absolute inset-0 lg:w-1/2 lg:left-1/2">
+  <SlidingBanner slot="banner" />
+
+  <!-- ============================================
+       3. HERO SECTION
+       ============================================ -->
+  <section class="relative min-h-[90vh] flex items-center overflow-hidden" style="background: linear-gradient(135deg, #0f0a06 0%, #1a1410 50%, #0f0a06 100%);">
+    <!-- Background image with overlay -->
+    <div class="absolute inset-0">
       <img 
         src="/assets/images/hero/hvac-technician-hero.jpg" 
-        alt="HVAC technician servicing air conditioning unit at customer's home"
-        class="w-full h-full object-cover opacity-20 lg:opacity-100"
+        alt="Digital marketing professionals collaborating on strategy"
+        class="w-full h-full object-cover opacity-15"
       />
-      <div class="absolute inset-0 bg-gradient-to-r from-brand-off-white via-brand-off-white/90 to-transparent lg:from-brand-off-white lg:via-brand-off-white/70 lg:to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0f0a06] via-[#0f0a06]/80 to-[#0f0a06]/60"></div>
     </div>
     
     <div class="container relative z-10 py-16 lg:py-24">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <!-- Hero Content -->
-        <div class="text-container-wide">
-          <!-- Partnership Badge -->
-          <div class="inline-flex items-center gap-2 bg-white border border-brand-soft-gray rounded-full px-4 py-2 mb-8 shadow-sm">
-            <span class="text-brand-red font-semibold text-sm">Spectrum Reach Partner</span>
-            <span class="text-brand-medium-gray">•</span>
-            <span class="text-brand-medium-gray text-sm">Tampa, FL</span>
+        <div>
+          <!-- Partnership Logos Row -->
+          <div class="flex items-center gap-5 mb-8">
+            <!-- Google Partner Logo -->
+            <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-2">
+              <svg class="h-5 w-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
+              </svg>
+              <span class="text-white text-xs font-semibold">Google Partner</span>
+            </div>
+            <!-- Spectrum Logo -->
+            <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-2">
+              <svg class="h-5 w-5 text-brand-light-blue" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+              <span class="text-white text-xs font-semibold">Spectrum</span>
+            </div>
+            <!-- SLP Logo -->
+            <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-2">
+              <div class="w-5 h-5 bg-brand-red rounded flex items-center justify-center">
+                <span class="text-white text-[8px] font-black">SLP</span>
+              </div>
+              <span class="text-white text-xs font-semibold">ServiceLinePro</span>
+            </div>
           </div>
           
-          <h1 class="text-brand-dark leading-tight mb-6">
-            Grow Your Local Market.<br />
-            <span class="text-brand-red">Build Revenue.</span> <span class="text-brand-gold">Create Legacy.</span>
+          <h1 class="text-white leading-tight mb-6" style="font-size: clamp(2.25rem, 5vw, 3.75rem);">
+            Local SEO & Google Ads<br />
+            <span class="text-brand-light-blue">That Actually Grow</span><br />
+            Your Business.
           </h1>
           
-          <p class="text-lg md:text-xl text-brand-medium-gray leading-relaxed mb-8">
-            The digital marketing agency built <strong class="text-brand-dark">exclusively for home services businesses</strong> doing $1M+ annually. Local SEO with a 90-day guarantee, Google Ads, custom websites, and TV advertising through our Spectrum partnership.
+          <p class="text-lg md:text-xl text-white/70 leading-relaxed mb-8 max-w-xl">
+            The digital marketing agency built <strong class="text-white">exclusively for home services businesses</strong> doing $1M+ annually. 90-day Map Pack guarantee. No contracts. Real results.
           </p>
           
-          <!-- Single Primary CTA -->
+          <!-- TWO Main Buttons -->
           <div class="flex flex-col sm:flex-row gap-4 mb-8">
             <a href="/booking/" class="btn-primary text-lg px-8 py-4">
-              Get Your Free Growth Plan →
+              Book Strategy Call →
             </a>
-            <a href="tel:+18135213199" class="btn-secondary text-lg px-8 py-4">
-              📞 (813) 521-3199
+            <a href="/booking/" class="btn-accent text-lg px-8 py-4">
+              Get a Free Growth Plan
             </a>
           </div>
           
           <!-- Trust Indicators -->
-          <div class="flex flex-wrap items-center gap-4 text-sm text-brand-medium-gray">
+          <div class="flex flex-wrap items-center gap-4 text-sm text-white/60">
             <span class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+              <svg class="w-5 h-5 text-brand-light-blue" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
               </svg>
               90-Day Guarantee
             </span>
             <span class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+              <svg class="w-5 h-5 text-brand-light-blue" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
               </svg>
               No Contracts
             </span>
             <span class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+              <svg class="w-5 h-5 text-brand-light-blue" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
               </svg>
               Tampa-Based
@@ -250,98 +252,232 @@ const guaranteeTerms = [
           </div>
         </div>
         
-        <!-- Simplified Hero Form Card (3 Fields) -->
+        <!-- 4. HERO FORM → Multi-Step Survey -->
         <div class="hidden lg:block">
-          <div class="bg-white rounded-2xl shadow-xl border border-brand-soft-gray p-8 max-w-md ml-auto">
-            <div class="text-center mb-6">
-              <h2 class="text-2xl font-bold text-brand-dark mb-2">Get Your Free Growth Plan</h2>
-              <p class="text-brand-medium-gray text-sm">See how we can help you lead your market in 90 days</p>
-            </div>
-            
-            <form id="hero-form" class="space-y-4">
-              <input type="text" name="name" placeholder="Your Name" required class="form-input" />
-              <input type="email" name="email" placeholder="Email Address" required class="form-input" />
-              <input type="tel" name="phone" placeholder="Phone Number" required class="form-input" />
-              <button type="submit" class="btn-primary w-full text-lg py-4">
-                Get My Free Strategy Call →
-              </button>
-            </form>
-            
-            <p class="text-center text-xs text-brand-medium-gray mt-4">
-              No contracts. No pressure. Just a clear growth plan.
-            </p>
-            
-            <!-- Mini trust signal -->
-            <div class="flex items-center justify-center gap-4 mt-6 pt-4 border-t border-brand-soft-gray">
-              <div class="text-center">
-                <p class="text-lg font-bold text-brand-dark">4.9★</p>
-                <p class="text-xs text-brand-medium-gray">Client Rating</p>
-              </div>
-              <div class="h-8 w-px bg-brand-soft-gray"></div>
-              <div class="text-center">
-                <p class="text-lg font-bold text-brand-dark">100+</p>
-                <p class="text-xs text-brand-medium-gray">Clients</p>
-              </div>
-            </div>
+          <HeroSurvey />
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Widget Placeholder (bottom right) -->
+    <button id="chat-widget" class="fixed bottom-6 right-6 z-50 bg-brand-light-blue hover:bg-brand-light-blue-dark text-brand-dark font-bold px-5 py-3 rounded-full shadow-xl flex items-center gap-2 transition-all hover:scale-105 lg:bottom-8 lg:right-8" aria-label="Text us">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+      </svg>
+      Text Us
+    </button>
+  </section>
+
+  <!-- ============================================
+       5. AUTHORITY BANNER (below hero)
+       ============================================ -->
+  <section class="relative py-10 overflow-hidden" style="background: #0f0a06; border-top: 2px solid #81dde3; border-bottom: 2px solid #81dde3;">
+    <div class="container">
+      <!-- TOP ROW: Trust Signals -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center mb-8">
+        <div class="flex flex-col items-center gap-2">
+          <svg class="w-8 h-8 text-brand-light-blue" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
+          </svg>
+          <p class="text-white font-bold text-lg md:text-xl">Google Certified</p>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="flex text-brand-gold">
+            {[1,2,3,4,5].map(() => (
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
           </div>
+          <p class="text-white font-bold text-lg md:text-xl">5.0 Star Rated</p>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <svg class="w-8 h-8 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+          <p class="text-white font-bold text-lg md:text-xl">TAG Certified</p>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <svg class="w-8 h-8 text-brand-light-blue" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+          <p class="text-white font-bold text-lg md:text-xl">Google Partner</p>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="h-px w-full bg-white/10 mb-8"></div>
+
+      <!-- BOTTOM ROW: Partner Logos -->
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14">
+        <!-- Google -->
+        <div class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity">
+          <svg class="h-7 w-auto text-white" viewBox="0 0 272 92" fill="currentColor">
+            <path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+            <path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+            <path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"/>
+            <path d="M225 3v65h-9.5V3h9.5z"/>
+            <path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"/>
+            <path d="M35.29 41.19V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49-.21z"/>
+          </svg>
+        </div>
+        <!-- Spectrum -->
+        <div class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity">
+          <span class="text-white font-bold text-xl tracking-wider" style="font-family: var(--font-heading);">SPECTRUM</span>
+          <span class="text-brand-light-blue text-xs font-semibold bg-brand-light-blue/10 px-2 py-0.5 rounded">Reach</span>
+        </div>
+        <!-- ServiceTitan -->
+        <div class="opacity-70 hover:opacity-100 transition-opacity">
+          <span class="text-white font-bold text-lg" style="font-family: var(--font-heading);">ServiceTitan</span>
+        </div>
+        <!-- Housecall Pro -->
+        <div class="opacity-70 hover:opacity-100 transition-opacity">
+          <span class="text-white font-bold text-lg" style="font-family: var(--font-heading);">Housecall Pro</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       STATS BAR
+       6. CASE STUDIES SECTION (2 large cards side by side)
        ============================================ -->
-  <section class="bg-white py-10 border-y border-brand-soft-gray">
+  <section class="bg-brand-off-white py-20">
     <div class="container">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        {stats.map((stat) => (
-          <div class="text-center">
-            <p class="text-3xl md:text-4xl font-extrabold text-brand-red mb-1">{stat.value}</p>
-            <p class="text-brand-medium-gray text-sm font-medium">{stat.label}</p>
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <p class="section-label">Proven Results</p>
+        <h2>Case Studies That Speak for Themselves</h2>
+        <p class="text-brand-medium-gray text-lg mx-auto">
+          Real businesses. Real numbers. See how we drive growth for home services companies.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {caseStudyCards.map((cs) => (
+          <div class="bg-white rounded-2xl overflow-hidden border border-brand-soft-gray shadow-sm hover:shadow-lg transition-all group">
+            <!-- Image area with company tag -->
+            <div class="relative aspect-video overflow-hidden bg-brand-light-gray">
+              <img src={cs.image} alt={cs.company} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+              <!-- Company name tag (bottom-left) -->
+              <div class="absolute bottom-3 left-3">
+                <span class="px-3 py-1.5 rounded-lg text-white text-sm font-bold backdrop-blur-sm" style={`background-color: ${cs.tagColor}80;`}>
+                  {cs.company}
+                </span>
+              </div>
+              <!-- Industry badge -->
+              <div class="absolute top-3 right-3">
+                <span class="px-2 py-1 rounded text-white text-xs font-semibold bg-black/50 backdrop-blur-sm">
+                  {cs.industry}
+                </span>
+              </div>
+            </div>
+
+            <!-- Accent color quote banner -->
+            <div class="px-6 py-4" style={`background-color: ${cs.quoteColor};`}>
+              <p class="text-white text-sm italic leading-relaxed">"{cs.quote}"</p>
+              <p class="text-white/80 text-xs font-semibold mt-1">— {cs.quoteName}</p>
+            </div>
+
+            <!-- Metrics row -->
+            <div class="px-6 py-5">
+              <div class="flex items-center">
+                <div class="flex-1 text-center">
+                  <p class="text-3xl font-extrabold text-brand-dark">{cs.metric1.value}</p>
+                  <p class="text-sm text-brand-medium-gray font-medium">{cs.metric1.label}</p>
+                </div>
+                <div class="w-px h-12 bg-brand-soft-gray"></div>
+                <div class="flex-1 text-center">
+                  <p class="text-3xl font-extrabold text-brand-dark">{cs.metric2.value}</p>
+                  <p class="text-sm text-brand-medium-gray font-medium">{cs.metric2.label}</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Description + CTA -->
+            <div class="px-6 pb-6">
+              <p class="text-sm text-brand-medium-gray leading-relaxed mb-4">{cs.description}</p>
+              <a href={cs.href} class="text-brand-red font-semibold text-sm hover:text-brand-coral inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                Learn More <span>→</span>
+              </a>
+            </div>
           </div>
         ))}
       </div>
-    </div>
-  </section>
 
-  <!-- ============================================
-       INDUSTRY CREDIBILITY BAR - ServiceTitan, Housecall Pro
-       ============================================ -->
-  <section class="bg-brand-off-white py-8">
-    <div class="container">
-      <p class="text-center text-sm text-brand-medium-gray mb-6">We integrate with the tools you already use</p>
-      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-        <div class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-brand-soft-red rounded-lg flex items-center justify-center">
-            <svg class="w-6 h-6 text-brand-red" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      <!-- ============================================
+           7. REVIEWS CAROUSEL (below case studies, same section)
+           ============================================ -->
+      <div class="mt-16">
+        <div class="flex items-center justify-between mb-8">
+          <div class="flex items-center gap-3">
+            <!-- Google logo -->
+            <svg class="h-6 w-auto" viewBox="0 0 272 92" fill="#4285F4">
+              <path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+              <path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+              <path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"/>
+              <path d="M225 3v65h-9.5V3h9.5z"/>
+              <path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"/>
+              <path d="M35.29 41.19V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49-.21z"/>
             </svg>
+            <span class="text-brand-dark font-bold text-lg">Reviews</span>
+            <div class="flex text-brand-gold">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              ))}
+            </div>
+            <span class="text-brand-medium-gray text-sm">5.0 rating</span>
           </div>
-          <div>
-            <p class="text-xs text-brand-medium-gray uppercase tracking-wider">Certified Partner</p>
-            <p class="font-bold text-brand-dark">Spectrum Reach</p>
+          <!-- Carousel nav arrows -->
+          <div class="hidden md:flex gap-2">
+            <button id="reviews-prev" class="w-10 h-10 rounded-full border border-brand-soft-gray bg-white flex items-center justify-center hover:bg-brand-light-gray transition-colors" aria-label="Previous reviews">
+              <svg class="w-5 h-5 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+            </button>
+            <button id="reviews-next" class="w-10 h-10 rounded-full border border-brand-soft-gray bg-white flex items-center justify-center hover:bg-brand-light-gray transition-colors" aria-label="Next reviews">
+              <svg class="w-5 h-5 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
           </div>
         </div>
-        <div class="h-8 w-px bg-brand-soft-gray hidden md:block"></div>
-        <div class="flex items-center gap-2">
-          <svg class="h-8 w-8 text-brand-dark" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
-          </svg>
-          <span class="font-semibold text-brand-dark">Google Partner</span>
-        </div>
-        <div class="h-8 w-px bg-brand-soft-gray hidden md:block"></div>
-        <div class="text-center px-4 py-2 bg-white rounded-lg border border-brand-soft-gray">
-          <p class="font-semibold text-brand-dark text-sm">ServiceTitan</p>
-          <p class="text-xs text-brand-medium-gray">Compatible</p>
-        </div>
-        <div class="text-center px-4 py-2 bg-white rounded-lg border border-brand-soft-gray">
-          <p class="font-semibold text-brand-dark text-sm">Housecall Pro</p>
-          <p class="text-xs text-brand-medium-gray">Compatible</p>
-        </div>
-        <div class="text-center px-4 py-2 bg-white rounded-lg border border-brand-soft-gray">
-          <p class="font-semibold text-brand-dark text-sm">Jobber</p>
-          <p class="text-xs text-brand-medium-gray">Compatible</p>
+
+        <!-- Reviews carousel container -->
+        <div class="overflow-hidden" id="reviews-carousel">
+          <div class="reviews-track" id="reviews-track">
+            {reviews.map((review) => (
+              <div class="min-w-[280px] md:min-w-[320px] bg-white rounded-xl border border-brand-soft-gray p-5 shadow-sm flex-shrink-0">
+                <div class="flex items-center gap-3 mb-3">
+                  <!-- Avatar -->
+                  <div class="w-10 h-10 rounded-full bg-brand-light-blue/30 flex items-center justify-center text-brand-dark font-bold text-sm">
+                    {review.name.split(' ').map(n => n[0]).join('')}
+                  </div>
+                  <div>
+                    <p class="font-semibold text-brand-dark text-sm">{review.name}</p>
+                    <p class="text-xs text-brand-medium-gray">{review.business}</p>
+                  </div>
+                </div>
+                <!-- Stars -->
+                <div class="flex gap-0.5 mb-3">
+                  {Array.from({length: review.rating}).map(() => (
+                    <svg class="w-4 h-4 text-brand-gold" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  ))}
+                </div>
+                <p class="text-sm text-brand-medium-gray leading-relaxed line-clamp-3">"{review.text}"</p>
+                <!-- Google logo small -->
+                <div class="flex items-center gap-1.5 mt-3 pt-3 border-t border-brand-soft-gray">
+                  <svg class="h-4 w-auto" viewBox="0 0 24 24" fill="#4285F4">
+                    <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
+                  </svg>
+                  <span class="text-xs text-brand-medium-gray">Google Review</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -371,11 +507,6 @@ const guaranteeTerms = [
             </p>
             <div class="flex items-center gap-4">
               <a href="/about/" class="btn-secondary">Meet Our Team →</a>
-              <a href="https://www.linkedin.com/in/willhamilton" target="_blank" rel="noopener" class="text-brand-medium-gray hover:text-brand-red transition-colors">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-              </a>
             </div>
           </div>
         </div>
@@ -397,63 +528,16 @@ const guaranteeTerms = [
   </section>
 
   <!-- ============================================
-       TESTIMONIALS - Real Clients, Real Results
-       ============================================ -->
-  <section class="bg-brand-light-gray py-20">
-    <div class="container">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <p class="section-label">Client Success Stories</p>
-        <h2>Real Clients. Real Results.</h2>
-        <p class="text-brand-medium-gray text-lg mx-auto">
-          Don't just take our word for it. Here's what business owners like you say about working with ServiceLinePro.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {testimonials.map((testimonial) => (
-          <div class="bg-white rounded-xl border border-brand-soft-gray p-6 shadow-sm flex flex-col">
-            <div class="flex items-center gap-4 mb-4">
-              <img 
-                src={testimonial.image} 
-                alt={testimonial.name}
-                class="w-16 h-16 rounded-full object-cover border-2 border-brand-soft-gray"
-              />
-              <div>
-                <p class="font-bold text-brand-dark">{testimonial.name}</p>
-                <p class="text-sm text-brand-medium-gray">{testimonial.company}</p>
-                <p class="text-xs text-brand-medium-gray">{testimonial.location}</p>
-              </div>
-            </div>
-            <div class="flex gap-2 mb-4">
-              <span class="badge badge-red">{testimonial.industry}</span>
-              <span class="badge">{testimonial.result}</span>
-            </div>
-            <blockquote class="text-brand-medium-gray text-sm leading-relaxed mb-4 flex-1">
-              "{testimonial.quote}"
-            </blockquote>
-            <div class="pt-4 border-t border-brand-soft-gray">
-              <p class="text-2xl font-extrabold text-brand-red">{testimonial.metric}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
        GEO-GRID RESULTS - Visual Proof
        ============================================ -->
-  <section class="bg-white py-20">
+  <section class="bg-brand-light-gray py-20">
     <div class="container">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <p class="section-label">Visual Proof</p>
           <h2 class="mb-6">See What Map Pack Domination Looks Like</h2>
           <p class="text-brand-medium-gray text-lg leading-relaxed mb-6">
-            This is an actual geo-grid result for one of our HVAC clients in Tampa. Green means they rank #1, #2, or #3 in that area. The red star is their business location.
-          </p>
-          <p class="text-brand-medium-gray leading-relaxed mb-6">
-            <strong class="text-brand-dark">Every green circle represents potential customers</strong> who will see our client first when they search for "AC repair near me" or "HVAC company."
+            This is an actual geo-grid result for one of our HVAC clients in Tampa. Green means they rank #1, #2, or #3 in that area.
           </p>
           <ul class="space-y-3 mb-8">
             <li class="flex items-start gap-3 text-brand-near-black">
@@ -477,29 +561,27 @@ const guaranteeTerms = [
           </ul>
           <a href="/services/local-seo/" class="btn-primary">Learn About Our SEO Process</a>
         </div>
-        <div class="bg-brand-light-gray rounded-2xl p-8">
-          <div class="bg-white rounded-xl p-4 shadow-sm border border-brand-soft-gray">
-            <div class="flex items-center justify-between mb-4">
-              <div>
-                <p class="font-bold text-brand-dark">Tampa HVAC Company</p>
-                <p class="text-sm text-brand-medium-gray">"AC repair near me" — Tampa, FL</p>
-              </div>
-              <span class="badge badge-red">Live Results</span>
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-brand-soft-gray">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <p class="font-bold text-brand-dark">Tampa HVAC Company</p>
+              <p class="text-sm text-brand-medium-gray">"AC repair near me" — Tampa, FL</p>
             </div>
-            <img 
-              src="/assets/images/geo-grid-results.svg" 
-              alt="Geo-grid showing Map Pack rankings across Tampa area - mostly green indicating top 3 positions"
-              class="w-full"
-            />
-            <div class="flex justify-center gap-8 mt-4 pt-4 border-t border-brand-soft-gray">
-              <div class="flex items-center gap-2">
-                <div class="w-4 h-4 rounded-full bg-green-500"></div>
-                <span class="text-sm text-brand-medium-gray">Top 3</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <div class="w-4 h-4 rounded-full bg-brand-red"></div>
-                <span class="text-sm text-brand-medium-gray">Business Location</span>
-              </div>
+            <span class="badge badge-red">Live Results</span>
+          </div>
+          <img 
+            src="/assets/images/geo-grid-results.svg" 
+            alt="Geo-grid showing Map Pack rankings across Tampa area"
+            class="w-full"
+          />
+          <div class="flex justify-center gap-8 mt-4 pt-4 border-t border-brand-soft-gray">
+            <div class="flex items-center gap-2">
+              <div class="w-4 h-4 rounded-full bg-green-500"></div>
+              <span class="text-sm text-brand-medium-gray">Top 3</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-4 h-4 rounded-full bg-brand-red"></div>
+              <span class="text-sm text-brand-medium-gray">Business Location</span>
             </div>
           </div>
         </div>
@@ -561,8 +643,8 @@ const guaranteeTerms = [
           
           <div class="bg-white rounded-xl border border-brand-soft-gray p-8">
             <div class="flex items-center gap-3 mb-6">
-              <div class="icon-container icon-container-lg" style="background-color: #FEF3C7;">
-                <svg class="w-8 h-8 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <div class="icon-container icon-container-lg" style="background-color: var(--color-brand-soft-blue);">
+                <svg class="w-8 h-8 text-brand-light-blue-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                 </svg>
               </div>
@@ -571,7 +653,7 @@ const guaranteeTerms = [
             <ul class="space-y-3">
               {guaranteeTerms.map((term) => (
                 <li class="flex items-start gap-3 text-brand-medium-gray text-sm">
-                  <svg class="w-4 h-4 text-brand-gold shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg class="w-4 h-4 text-brand-light-blue-dark shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                   </svg>
                   {term}
@@ -614,8 +696,8 @@ const guaranteeTerms = [
         </div>
         
         <div class="card card-hover text-center p-8">
-          <div class="icon-container icon-container-lg mx-auto mb-6" style="background-color: #FEF3C7;">
-            <svg class="w-8 h-8 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+          <div class="icon-container icon-container-lg mx-auto mb-6" style="background-color: var(--color-brand-soft-blue);">
+            <svg class="w-8 h-8 text-brand-light-blue-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
             </svg>
           </div>
@@ -658,7 +740,7 @@ const guaranteeTerms = [
           <a href={service.href} class="group bg-white rounded-xl border border-brand-soft-gray hover:border-brand-red hover:shadow-lg transition-all p-6 md:p-8 flex flex-col">
             {service.highlight && (
               <div class="mb-4">
-                <span class="badge badge-gold">Spectrum Exclusive</span>
+                <span class="badge badge-blue">Spectrum Exclusive</span>
               </div>
             )}
             
@@ -714,7 +796,7 @@ const guaranteeTerms = [
   </section>
 
   <!-- ============================================
-       SPECTRUM PARTNERSHIP - With Production Imagery
+       SPECTRUM PARTNERSHIP
        ============================================ -->
   <section class="bg-white py-20">
     <div class="container">
@@ -740,11 +822,10 @@ const guaranteeTerms = [
             Most digital agencies can run Google Ads and do SEO. Only ServiceLinePro can put your business on television and streaming platforms through our direct partnership with Spectrum — the largest cable provider in America.
           </p>
           
-          <!-- Clean callout -->
-          <div class="bg-brand-soft-red border border-brand-red/20 rounded-xl p-6 mb-6">
+          <div class="bg-brand-soft-blue border border-brand-light-blue/30 rounded-xl p-6 mb-6">
             <div class="flex items-start gap-4">
-              <div class="icon-container shrink-0">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <div class="icon-container shrink-0" style="background-color: var(--color-brand-soft-blue);">
+                <svg class="w-6 h-6 text-brand-light-blue-dark" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
                 </svg>
               </div>
@@ -757,19 +838,19 @@ const guaranteeTerms = [
           
           <ul class="space-y-3 mb-8">
             <li class="flex items-start gap-3 text-brand-near-black">
-              <svg class="w-5 h-5 text-green-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <svg class="w-5 h-5 text-brand-light-blue-dark shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
               </svg>
               Targeted TV ads in your exact service area
             </li>
             <li class="flex items-start gap-3 text-brand-near-black">
-              <svg class="w-5 h-5 text-green-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <svg class="w-5 h-5 text-brand-light-blue-dark shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
               </svg>
-              Streaming placements on platforms your customers watch
+              Streaming on 200+ apps (Hulu, Peacock, ESPN+, etc.)
             </li>
             <li class="flex items-start gap-3 text-brand-near-black">
-              <svg class="w-5 h-5 text-green-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <svg class="w-5 h-5 text-brand-light-blue-dark shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
               </svg>
               Multi-channel campaigns for maximum market impact
@@ -844,11 +925,65 @@ const guaranteeTerms = [
 </PageLayout>
 
 <script is:inline>
-  // Simple form handling
-  document.getElementById('hero-form')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    window.location.href = '/booking/';
-  });
+  // Reviews carousel auto-slide & controls
+  (function() {
+    const track = document.getElementById('reviews-track');
+    const prevBtn = document.getElementById('reviews-prev');
+    const nextBtn = document.getElementById('reviews-next');
+    if (!track) return;
+
+    let scrollPos = 0;
+    const cardWidth = 336; // min-width + gap
+    const maxScroll = track.scrollWidth - track.parentElement.clientWidth;
+
+    function slideTo(pos) {
+      scrollPos = Math.max(0, Math.min(pos, maxScroll));
+      track.style.transform = `translateX(-${scrollPos}px)`;
+    }
+
+    nextBtn?.addEventListener('click', () => slideTo(scrollPos + cardWidth));
+    prevBtn?.addEventListener('click', () => slideTo(scrollPos - cardWidth));
+
+    // Auto-slide every 7 seconds
+    let autoSlide = setInterval(() => {
+      if (scrollPos >= maxScroll) {
+        slideTo(0);
+      } else {
+        slideTo(scrollPos + cardWidth);
+      }
+    }, 7000);
+
+    // Pause auto-slide on hover
+    track.parentElement?.addEventListener('mouseenter', () => clearInterval(autoSlide));
+    track.parentElement?.addEventListener('mouseleave', () => {
+      autoSlide = setInterval(() => {
+        if (scrollPos >= maxScroll) {
+          slideTo(0);
+        } else {
+          slideTo(scrollPos + cardWidth);
+        }
+      }, 7000);
+    });
+
+    // Draggable
+    let isDragging = false, startX = 0, startScroll = 0;
+    track.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.pageX;
+      startScroll = scrollPos;
+      track.style.cursor = 'grabbing';
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const diff = startX - e.pageX;
+      slideTo(startScroll + diff);
+    });
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+      track.style.cursor = 'grab';
+    });
+    track.style.cursor = 'grab';
+  })();
 </script>
 
 <style>

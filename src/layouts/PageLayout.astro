@@ -8,14 +8,18 @@ interface Props {
   description?: string;
   ogImage?: string;
   canonicalUrl?: string;
+  showBanner?: boolean;
 }
 
-const { title, description, ogImage, canonicalUrl } = Astro.props;
+const { title, description, ogImage, canonicalUrl, showBanner = false } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} ogImage={ogImage} canonicalUrl={canonicalUrl}>
   <slot name="head" slot="head" />
-  <Header slot="header" />
+  <Fragment slot="header">
+    <slot name="banner" />
+    <Header />
+  </Fragment>
   <slot />
   <Footer slot="footer" />
 </BaseLayout>
