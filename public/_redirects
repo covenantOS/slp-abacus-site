@@ -3,6 +3,9 @@
 #
 # Format: /old-path /new-path 301
 
+/services/google-ads  /services/ppc  301
+/services/google-ads/ /services/ppc/ 301
+
 # Service pages (add actual old URLs after crawl audit)
 # /seo-services              /services/local-seo   301
 # /google-ads                /services/ppc          301

@@ -91,12 +91,12 @@ const caseStudyCards = [
     industry: "HVAC",
     tagColor: "#cf312b",
     quoteColor: "#cf312b",
-    image: "/assets/images/services/seo-dashboard.png",
+    image: "/assets/images/services/local-map-ranker.webp",
     quote: "ServiceLinePro got us to #1 in the Map Pack in under 50 days. Our phone volume doubled almost overnight.",
     quoteName: "Mike J., Owner",
-    metric1: { value: "+427%", label: "Top 10 Keywords" },
-    metric2: { value: "+68%", label: "Organic Conversions" },
-    description: "A mid-size HVAC company in Tampa struggling to compete in a saturated market. Within 47 days of launching the Foundation + Accelerator plan, they reached #1 for their primary keyword.",
+    metric1: { value: "#1", label: "Map Pack in 47 Days" },
+    metric2: { value: "+427%", label: "Top 10 Keywords" },
+    description: "A mid-size HVAC company in Tampa struggling to compete in a saturated market. Within 47 days of launching the Foundation + Accelerator plan, they reached #1 for their primary keyword and saw a 68% lift in organic conversions.",
     href: "/case-studies/"
   },
   {
@@ -104,12 +104,12 @@ const caseStudyCards = [
     industry: "Plumbing",
     tagColor: "#62c2dc",
     quoteColor: "#0e7490",
-    image: "/assets/images/services/seo-dashboard.png",
+    image: "/assets/images/services/construction-case-study.webp",
     quote: "The Spectrum TV partnership combined with SEO made us the most recognized plumber in Central Florida. Game changer.",
     quoteName: "Robert C., CEO",
-    metric1: { value: "+285%", label: "Organic Traffic" },
-    metric2: { value: "$1.8M", label: "Revenue Generated" },
-    description: "A plumbing company in Orlando that paired Local SEO with TV & Streaming advertising to dominate their market across three cities in 6 months.",
+    metric1: { value: "+312%", label: "Organic Traffic" },
+    metric2: { value: "$2.1M", label: "Revenue Generated" },
+    description: "A plumbing company in Orlando that paired Local SEO with TV & Streaming advertising to dominate their market across three cities in 6 months, generating over $2.1M in attributed revenue.",
     href: "/case-studies/"
   }
 ];
@@ -253,7 +253,7 @@ const reviews = [
         </div>
         
         <!-- 4. HERO FORM → Multi-Step Survey -->
-        <div class="hidden lg:block">
+        <div class="mt-8 lg:mt-0">
           <HeroSurvey />
         </div>
       </div>
@@ -536,7 +536,7 @@ const reviews = [
               <span class="badge badge-red">Live Results</span>
             </div>
             <img 
-              src="/assets/images/geo-grid-results.svg" 
+              src="/assets/images/services/local-map-ranker-2.webp" 
               alt="Geo-grid showing Map Pack rankings across Tampa area — 23 of 25 grid points in Top 3"
               class="w-full rounded-lg"
             />
@@ -708,7 +708,7 @@ const reviews = [
         <div class="relative group">
           <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
             <img 
-              src="/assets/images/ads-revenue-dashboard.webp" 
+              src="/assets/images/services/local-seo-ppc.webp" 
               alt="Google Ads dashboard showing revenue growth and campaign performance"
               class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700"
             />
@@ -832,7 +832,7 @@ const reviews = [
         <div class="order-1 lg:order-2 relative group">
           <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
             <img 
-              src="/assets/images/team/video-production-team.jpg" 
+              src="/assets/images/services/roofing-video.webp" 
               alt="Professional Spectrum video production team filming a TV commercial for a home services business"
               class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700"
             />
@@ -879,10 +879,10 @@ const reviews = [
             <!-- Service image header -->
             <div class="relative h-52 overflow-hidden">
               <img 
-                src={service.icon === 'search' ? '/assets/images/seo-revenue-dashboard.webp' : 
-                     service.icon === 'cursor' ? '/assets/images/ads-revenue-dashboard.webp' :
-                     service.icon === 'code' ? '/assets/images/design-presentation-contact.webp' :
-                     '/assets/images/team/video-production-team.jpg'}
+                src={service.icon === 'search' ? '/assets/images/services/seo-presentation.webp' : 
+                     service.icon === 'cursor' ? '/assets/images/services/pay-per-result.webp' :
+                     service.icon === 'code' ? '/assets/images/services/website-designs.webp' :
+                     '/assets/images/services/roofing-video.webp'}
                 alt={service.title}
                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               />
@@ -1024,30 +1024,25 @@ const reviews = [
           From strategy call to ranking domination — here's exactly what working with us looks like.
         </p>
         
-        <!-- Video embed placeholder -->
-        <div class="relative bg-brand-dark rounded-2xl overflow-hidden shadow-2xl aspect-video">
-          <!-- Placeholder state - replace src with actual YouTube embed -->
-          <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-brand-dark to-[#1a1410]">
+        <!-- Video embed with YouTube thumbnail -->
+        <div class="relative bg-brand-dark rounded-2xl overflow-hidden shadow-2xl aspect-video group cursor-pointer" id="video-container" onclick="this.innerHTML='<iframe class=\'absolute inset-0 w-full h-full\' src=\'https://www.youtube.com/embed/xlAEUTuZWAg?autoplay=1\' title=\'ServiceLinePro Process Overview\' frameborder=\'0\' allow=\'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen></iframe>'">
+          <img 
+            src="https://i.ytimg.com/vi/xlAEUTuZWAg/maxresdefault.jpg" 
+            alt="ServiceLinePro process overview video thumbnail" 
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
             <div class="text-center">
-              <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-brand-red/20 border-2 border-brand-red flex items-center justify-center cursor-pointer hover:bg-brand-red/30 transition-colors group">
-                <svg class="w-8 h-8 text-brand-red ml-1 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+              <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-brand-red/90 flex items-center justify-center group-hover:bg-brand-red group-hover:scale-110 transition-all shadow-2xl">
+                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
                 </svg>
               </div>
-              <p class="text-white font-bold text-lg">Watch How We Dominate Local Markets</p>
-              <p class="text-white/50 text-sm mt-1">2 min overview of our process</p>
+              <p class="text-white font-bold text-lg drop-shadow-lg">Watch How We Dominate Local Markets</p>
+              <p class="text-white/70 text-sm mt-1 drop-shadow">2 min overview of our process</p>
             </div>
           </div>
-          <!-- Uncomment below for actual YouTube embed:
-          <iframe 
-            class="absolute inset-0 w-full h-full"
-            src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
-            title="ServiceLinePro Process Overview"
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen
-          ></iframe>
-          -->
         </div>
         <p class="text-sm text-brand-medium-gray mt-4 italic">
           ServiceLinePro helps home services businesses dominate their local market through a proprietary combination of white-hat Local SEO, Google Ads management, and TV/streaming advertising via our exclusive Spectrum Reach partnership.

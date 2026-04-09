@@ -15,8 +15,8 @@ const teamMembers = [
   {
     name: 'Victoria Hamilton',
     title: 'Director of Operations',
-    photo: '/assets/images/victoria-hamilton.webp',
-    hasPhoto: true,
+    photo: null,
+    hasPhoto: false,
     bio: 'Victoria oversees the day-to-day operations of ServiceLinePro, ensuring every client campaign runs smoothly from onboarding through delivery. She manages workflows, team coordination, quality assurance, and client communications. Her operational discipline keeps the agency running efficiently as the team scales, and her attention to detail ensures nothing slips through the cracks.',
     linkedin: null,
   },
@@ -233,7 +233,7 @@ const teamMembers = [
                   />
                 ) : (
                   <div class="w-full h-full bg-gradient-to-br from-brand-dark to-brand-dark/80 flex items-center justify-center">
-                    <span class="text-6xl font-heading font-bold text-white/20">{member.name.split(' ').map(n => n[0]).join('')}</span>
+                    <span class="text-6xl font-heading font-bold text-white/40">{member.name.split(' ').map(n => n[0]).join('')}</span>
                   </div>
                 )}
               </div>
@@ -267,7 +267,7 @@ const teamMembers = [
                   />
                 ) : (
                   <div class="w-full h-full bg-gradient-to-br from-brand-dark to-brand-dark/80 flex items-center justify-center">
-                    <span class="text-4xl font-heading font-bold text-white/20">{member.name.split(' ').map(n => n[0]).join('')}</span>
+                    <span class="text-4xl font-heading font-bold text-white/40">{member.name.split(' ').map(n => n[0]).join('')}</span>
                   </div>
                 )}
               </div>
